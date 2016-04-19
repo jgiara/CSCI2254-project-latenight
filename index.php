@@ -45,6 +45,15 @@
                         <a class="page-scroll" href="#contact">About Us</a>
                     </li>
                 </ul>
+                <form class="navbar-form navbar-right" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-default">Sign In</button>
+                </form>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -57,7 +66,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Welcome to our boring page</h1>
-                    <a class="btn btn-default page-scroll" href="#register">Register Now!</a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
                 </div>
             </div>
         </div>
@@ -96,6 +105,66 @@
             </div>
         </div>
     </section>
+
+    <!-- MODAL FOR Registration -->
+        <div id="registerModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create an Account</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form action="./include/register.php" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="number">Phone Number:</label>
+                        <input type="tel" name="number" class="form-control" id="number" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eagleID">Eagle ID #:</label>
+                        <input type="number" name="eagleID" class="form-control" id="eagleID" placeholder="Eagle ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Dorm Name/Room:</label>
+                        <input type="num" name="address" class="form-control" id="address" placeholder="Dorm Name/Room" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="8 Character Minimum" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">What would you like to do:</label>
+                        <select name="userType" class="form-control" id="userType" required>
+                            <option value="">--</option>
+                            <option value="user">Order Food</option>
+                            <option value="delivery">Make Deliveries</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-default"></input>
+                    </form>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end MODAL -->
 
  	<!-- scripts & BS/custom JS -->
 
