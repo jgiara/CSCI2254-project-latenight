@@ -1,3 +1,9 @@
+drop table Users;
+drop table Reviews;
+drop table Orders;
+drop table Items;
+drop table Order_Items;
+
 create table Users (
 	Eagle_Id int(11) not null auto_increment primary key,
         First_Name varchar(50) not null,
