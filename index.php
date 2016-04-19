@@ -65,18 +65,18 @@
 
     <!-- register Section -->
     <section id="register" class="register-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Register Section</h1>
-                </div>
-            </div>
-        </div>
+                    <h1>Sign up to place an order!</h1>
+        		</div>
+        	</div>
+        </div>	
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Services Section</h1>
@@ -87,10 +87,11 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Contact Section</h1>
+                    	
                 </div>
             </div>
         </div>
