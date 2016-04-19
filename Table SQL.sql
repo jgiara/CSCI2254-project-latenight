@@ -11,6 +11,7 @@ create table Users (
 
 create table Reviews (
 	Id int(11) not null auto_increment primary key,
+        Delivery_Person int(11) not null references Users(Eagle_Id),
         Stars varchar(5) not null check(Stars in ('*', '**', '***', '****', '*****')),
         Submitted date not null, 
         Comments text
@@ -24,7 +25,7 @@ create table Orders (
         Time_Fulfilled datetime,
         Delivery_Location varchar(100) not null,
         Payment_Method varchar(25) not null check(Payment_Method in('Meal Plan', 'Cash')),
-        Stage varchar(15) not null check(Stage in('Pending', 'Progress', 'Out For Delivery', 'Delivered', 'Cancelled')),
+        Stage varchar(15) not null check(Stage in('Pending', 'In Progress', 'Out For Delivery', 'Delivered', 'Cancelled')),
         Comments text,
         Delivery_Charge float(3,2),
         Total_Price float(3,2)
