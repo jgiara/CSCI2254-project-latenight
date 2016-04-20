@@ -1,0 +1,33 @@
+index.php - landing page
+
+-- User
+
+user home - place order, re-order button, view orders, settings
+
+place order - show menu based on dining hall selection, allow them to check items and add notes for oder
+
+track - display status stored in cookie 
+
+settings - change email, phone, contact, change payment
+
+view past order - table of orders with all info
+
+--delivery
+
+home page - select deliveries (table of active deliveries with accept button)
+
+Settings - change contact info
+
+Payment history - table displayed fulfilled orders
+
+fulfill order page - show delivery info/map/button to select that its been fulfilled
+
+--admin
+
+homepage - console active order
+
+view all past orders
+
+edit payment/charge amounts
+
+view user/delivery ranking/block or ban from system 
