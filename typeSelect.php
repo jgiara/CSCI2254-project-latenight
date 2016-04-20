@@ -9,7 +9,8 @@
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="css/bootstrap.min.css" rel="stylesheet">
- 	<link rel="stylesheet" href="css/home.css">
+ 	<link rel="stylesheet" href="css/styles.css">
+ 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -46,9 +47,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Select your role:</h1>
-                    <a type="button" class="btn btn-lg btn-success" href="./deliverer/deliveryHome.php">Place an Order</a>
-                    <a type="button" class="btn btn-lg btn-warning" href="./user/userHome.php">Make a Delivery</a>
+                    <h1>Pick an account:</h1>
+            			<a href="./user/userHome.php" class="btn btn-sq-lg btn-primary">
+                		<i class="fa fa-cutlery fa-4x"></i><br>Order
+            			</a>
+            			<a href="./deliverer/deliveryHome.php" class="btn btn-sq-lg btn-primary">
+                		<i class="fa fa-car fa-4x"></i><br>Deliver
+            			</a>
                 </div>
             </div>
         </div>
