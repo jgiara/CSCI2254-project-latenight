@@ -1,3 +1,71 @@
+<?php
+ob_start();
+session_start();
+
+require './include/init.php';
+$general->logged_in_protect();
+//Register
+if (isset ( $_POST ['submit'] )) {
+    if (empty ( $_POST ['Password'] ) || empty ( $_POST ['Email'] )) {
+        
+        $errors [] = 'All fields are required.';
+    } else {
+        if (strlen ( $_POST ['Password'] ) < 6) {
+            $errors [] = 'Your password must be atleast 6 characters';
+        } else if (strlen ( $_POST ['Password'] ) > 18) {
+            $errors [] = 'Your password cannot be more than 18 characters long';
+        }
+        if (filter_var ( $_POST ['Email'], FILTER_VALIDATE_EMAIL ) === false) {
+            $errors [] = 'Please enter a valid email address';
+        } else if ($users->email_exists ( $_POST ['Email'] ) === true) {
+            $errors [] = 'That email already exists.';
+        }
+    }
+    if (empty ( $errors ) == true) {
+        
+        $Password = $_POST ['Password'];
+        $Email = htmlentities ( $_POST ['Email'] );
+        $First_Name = htmlentities ( $_POST ['First_Name'] );
+        $Last_Name = htmlentities ( $_POST ['Last_Name'] );
+        $Eagle_Id = htmlentities($_POST ['Eagle_Id']);
+        $Address = htmlentities($_POST ['Address']);
+        $Phone = htmlentities($_POST ['Phone']);
+        $Type = htmlentities($_POST ['Type']);
+
+        
+        $users->register ( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id, $Address, $Phone, $Type);
+    
+        
+        header ( 'Location: ./user/userHome.php' );
+        exit ();
+    }
+}
+//Login
+if (isset ( $_POST ['signin'] )) {
+ 
+  $Email_s = trim($_POST['Email_s']);
+  $Password_s = trim($_POST['Password_s']);
+ 
+  if ($users->email_exists($Email_s) === false) {
+    $errors_s[] = 'Sorry that email does not exist.';
+  }  else {
+ 
+    $login = $users->login($Email_s, $Password_s);
+    if ($login === false) {
+      $errors_s[] = 'Incorrect login information.';
+    }else {
+      // username/password is correct and the login method of the $users object returns the user id, which is stored in $login.
+ 
+      $_SESSION['Eagle_Id'] =  $login; // The user's id is now set into the user's session  in the form of $_SESSION['id'] see general.php for use 
+      
+      #Redirect the user to home page
+      header('Location: ./user/userHome.php');
+      exit();
+    }
+  }
+} 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -45,14 +113,20 @@
                         <a class="page-scroll" href="#contact">About Us</a>
                     </li>
                 </ul>
+                <?php
+                            if (empty ( $errors_s ) == false) {
+                                echo '<p class="navbar-text">' . implode ( '</p><p class="navbar-text">', $errors_s ) . '</p>';
+                            }
+                    
+                        ?>
                 <form class="navbar-form navbar-right" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        <input type="text" class="form-control" name="Email_s" placeholder="Username" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control" name="Password_s" placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn btn-default">Sign In</button>
+                    <button type="submit" name="signin"class="btn btn-default">Sign In</button>
                 </form>
             </div>
             <!-- /.navbar-collapse -->
@@ -116,51 +190,56 @@
                     <h4 class="modal-title">Create an Account</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="./include/register.php" method="POST">
+                    <form action="index.php" method="POST" name="registerForm">
                     <div class="form-group">
                         <label for="email">Email Address:</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Email" required>
+                        <input type="email" name="Email" class="form-control" id="email" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="firstName">First Name:</label>
-                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
+                        <input type="text" name="First_Name" class="form-control" id="firstName" placeholder="First Name" required>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name:</label>
-                        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
+                        <input type="text" name="Last_Name" class="form-control" id="lastName" placeholder="Last Name" required>
                     </div>
                     <div class="form-group">
                         <label for="number">Phone Number:</label>
-                        <input type="tel" name="number" class="form-control" id="number" placeholder="Phone Number" required>
+                        <input type="tel" name="Phone" class="form-control" id="number" placeholder="Phone Number" required>
                     </div>
                     <div class="form-group">
                         <label for="eagleID">Eagle ID #:</label>
-                        <input type="number" name="eagleID" class="form-control" id="eagleID" placeholder="Eagle ID" required>
+                        <input type="number" name="Eagle_Id" class="form-control" id="eagleID" placeholder="Eagle ID" required>
                     </div>
                     <div class="form-group">
                         <label for="address">Dorm Name/Room:</label>
-                        <input type="num" name="address" class="form-control" id="address" placeholder="Dorm Name/Room" required>
+                        <input type="text" name="Address" class="form-control" id="address" placeholder="Dorm Name/Room" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="8 Character Minimum" required>
+                        <input type="password" name="Password" class="form-control" id="password" placeholder="8 Character Minimum" required>
                     </div>
                     <div class="form-group">
                         <label for="userType">What would you like to do:</label>
-                        <select name="userType" class="form-control" id="userType" required>
-                            <option value="">--</option>
-                            <option value="user">Order Food</option>
-                            <option value="delivery">Make Deliveries</option>
-                            <option value="both">Both</option>
+                        <select name="Type" class="form-control" id="userType" required>
+                            <option name="role" value="">--</option>
+                            <option name="role" value="User">Order Food</option>
+                            <option name="role" value="Delivery Person">Make Deliveries</option>
+                            <option name="role" value="Both">Both</option>
                         </select>
                     </div>
-                    <input type="submit" name="submit" value="Submit" class="btn btn-default"></input>
+                    <input type="submit" name="submit" value="Register" class="btn btn-default"></input>
                     </form>
+                        <?php
+                            if (empty ( $errors ) == false) {
+                                echo '<p>' . implode ( '</p><p>', $errors ) . '</p>';
+                            }
+                    
+                        ?>
                   </div>
-
-                  <div class="modal-footer">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
+                </div>
                 </div>
               </div>
             </div>
