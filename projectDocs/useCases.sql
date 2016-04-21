@@ -17,6 +17,8 @@ Postcondition: Order added to orders table, deliverers can view
 Queries:
 INSERT INTO Orders(`Requested_By`, `Time_Submitted`, `Delivery_Location`, `Payment_Method`, `Stage`, `Comments`, `Delivery_Charge`, `Total_Price`)
 VALUES ('$currUser',NOW(),'$address','$payment','pending','$comments','$charge', '$price');
+INSERT INTO Order_Items('Order_Id', 'Item_Id')
+VALUES ('$orderId', '$itemId'); #User will select appropiate item and back-end will store ids of selected items
 
 3.
 Accept a delivery
