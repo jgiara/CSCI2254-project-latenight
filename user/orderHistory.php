@@ -43,7 +43,7 @@ $general->logged_out_protect();
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navigation <span class="fa fa-angle-down"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="./userHome.<?php  ?>">Home</a></li>
+            <li><a href="./userHome.php">Home</a></li>
             <li><a href="../typeSelect.php">Switch Account</a></li>
             <li><a href="./userSettings.php">Settings</a></li>
             <li role="separator" class="divider"></li>
