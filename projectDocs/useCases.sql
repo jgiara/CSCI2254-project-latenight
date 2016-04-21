@@ -6,8 +6,8 @@ Actor: User/Deliverer
 Precondition: User/Deliverer is not registered
 Postcondition: User/Deliverer is registered
 Queries: 
-INSERT INTO Users(`First_Name`, `Last_Name`, `Address`, `Phone`, `Email`, `Type`, `Communication_Preference`)
-VALUES ('$first','$last','$address','$phone','$email','$type','$pref');
+INSERT INTO Users(`First_Name`, `Last_Name`, `Address`, `Phone`, `Email`, 'Password', `Type`, `Communication_Preference`)
+VALUES ('$first','$last','$address','$phone','$email', sha1($password),'$type','$pref');
 
 2.
 Place an order

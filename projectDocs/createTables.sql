@@ -11,6 +11,7 @@ create table Users (
         Address varchar(100),
         Phone varchar(12) not null, 
         Email varchar(30) not null,
+        Password varchar(20) not null,
         Type varchar(20) not null check(Type in ('User', 'Delivery Person', 'Both', 'Admin')),
         Communication_Preference varchar(15)
 );
