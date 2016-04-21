@@ -1,120 +1,101 @@
-#Populate Users Table
-
-
-#Populate Reviews Table
-
-
-#Populate Orders Table
-
-
-#Populate Items Table
 #Mac Items
 insert into Items (Name, Price, Availability)
 values
-(Chicken Tenders, 6.49, 'Mac');
+('Chicken Tenders', 6.49, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(French Fries, 2.50, 'Mac');
+('French Fries', 2.50, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Mozzarella Sticks, 5.70, 'Mac');
+('Mozzarella Sticks', 5.70, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Pasta, 4.90, 'Mac');
+('Pasta', 4.90, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Pasta & Meatballs, 7.20, 'Mac');
+('Pasta & Meatballs', 7.20, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Onion Rings, 2.50, 'Mac');
+('Onion Rings', 2.50, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Grilled Chicken, 7.55, 'Mac');
+('Grilled Chicken', 7.55, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Burger, 8.00, 'Mac');
+('Burger', 8.00, 'Mac');
 insert into Items (Name, Price, Availability)
 values
-(Pizza, 5.39, 'Mac');
+('Pizza', 5.39, 'Mac');
 
 #Stuart Items
 insert into Items (Name, Price, Availability)
 values
-(Chicken Tenders, 6.49, 'Stuart');
+('Chicken Tenders', 6.49, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(French Fries, 2.50, 'Stuart');
+('French Fries', 2.50, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Mozzarella Sticks, 5.70, 'Stuart');
+('Mozzarella Sticks', 5.70, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Pasta, 4.90, 'Stuart');
+('Pasta', 4.90, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Pasta & Meatballs, 7.20, 'Stuart');
+('Pasta & Meatballs', 7.20, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Onion Rings, 2.50, 'Stuart');
+('Onion Rings', 2.50, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Grilled Chicken, 7.55, 'Stuart');
+('Grilled Chicken', 7.55, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Burger, 8.00, 'Stuart');
+('Burger', 8.00, 'Stuart');
 insert into Items (Name, Price, Availability)
 values
-(Pizza, 5.39, 'Stuart');
+('Pizza', 5.39, 'Stuart');
 
 #Lower Items
 insert into Items (Name, Price, Availability)
 values
-(Chicken Tenders, 6.49, 'Lower');
+('Chicken Tenders', 6.49, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(French Fries, 2.50, 'Lower');
+('French Fries', 2.50, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Mozzarella Sticks, 5.70, 'Lower');
+('Mozzarella Sticks', 5.70, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Pasta, 4.90, 'Lower');
+('Pasta', 4.90, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Pasta & Meatballs, 7.20, 'Lower');
+('Pasta & Meatballs', 7.20, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Onion Rings, 2.50, 'Lower');
+('Onion Rings', 2.50, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Grilled Chicken, 7.55, 'Lower');
+('Grilled Chicken', 7.55, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Burger, 8.00, 'Lower');
+('Burger', 8.00, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Pizza, 5.39, 'Lower');
+('Pizza', 5.39, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Caesar Wrap, 6.50, 'Lower');
+('Caesar Wrap', 6.50, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Honey Q Wrap, 6.50, 'Lower');
+('Honey Q Wrap', 6.50, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Chicken Parm Sub, 7.29, 'Lower');
+('Chicken Parm Sub', 7.29, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Buffalo Chicken Sub, 5.39, 'Lower');
+('Buffalo Chicken Sub', 5.39, 'Lower');
 insert into Items (Name, Price, Availability)
 values
-(Steak & Cheese, 7.69, 'Lower');
-
-
-
-
-
-
-
-
-#Populate Order_Items Table
+('Steak & Cheese', 7.69, 'Lower');

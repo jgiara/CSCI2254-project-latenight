@@ -5,7 +5,7 @@ drop table Items;
 drop table Order_Items;
 
 create table Users (
-	Eagle_Id int(11) not null auto_increment primary key,
+	Eagle_Id int(11) not null primary key,
         First_Name varchar(50) not null,
         Last_Name varchar(50) not null, 
         Address varchar(100),
@@ -13,7 +13,7 @@ create table Users (
         Email varchar(30) not null,
         Password varchar(20) not null,
         Type varchar(20) not null check(Type in ('User', 'Delivery Person', 'Both', 'Admin')),
-        Communication_Preference varchar(15)
+        Communication_Preference varchar(15) not null check(Communication_Preference in('Email', 'Phone'))
 );
 
 create table Reviews (
