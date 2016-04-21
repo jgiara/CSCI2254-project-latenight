@@ -11,7 +11,7 @@ $general->logged_out_protect();
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Select Role | Project Late Night</title>
+	<title>Home | Project Late Night</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -59,16 +59,16 @@ $general->logged_out_protect();
 			<div class="row">
 		    	<div class="col-lg-12">
           			<p>
-            			<a href="#" class="btn btn-sq-lg btn-primary">
+            			<a href="./placeOrder.php" class="btn btn-sq-lg btn-primary">
                 		<i class="fa fa-cutlery fa-4x"></i><br/>Order
             			</a>
-            			<a href="#" class="btn btn-sq-lg btn-primary">
+            			<a href="./trackOrder.php" class="btn btn-sq-lg btn-primary">
                 		<i class="fa fa-angle-double-right fa-4x"></i><br/>Track my Order
             			</a>
-            			<a href="#" class="btn btn-sq-lg btn-primary">
+            			<a href="./orderHistory.php" class="btn btn-sq-lg btn-primary">
                 		<i class="fa fa-th-list fa-4x"></i><br/>Order History
             			</a>
-            			<a href="#" class="btn btn-sq-lg btn-primary">
+            			<a href="./userSettings.php" class="btn btn-sq-lg btn-primary">
                 		<i class="fa fa-cog fa-4x"></i><br/>Settings
             			</a>
           			</p>

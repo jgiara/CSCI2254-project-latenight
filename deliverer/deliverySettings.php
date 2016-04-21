@@ -1,3 +1,9 @@
+<?php 
+ob_start();
+session_start();
+require '../include/init.php';
+$general->logged_out_protect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 

@@ -12,7 +12,7 @@ $general->logged_out_protect();
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Track Order | Project Late Night</title>
+	<title>Order History | Project Late Night</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
