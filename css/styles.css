@@ -61,3 +61,32 @@ html {
   height: 25px !important;
   padding:2px;
 }
+/*color scheme*/
+.navbar {
+  background-color: #b30000;
+}
+.navbar-default .navbar-nav>li>a {
+  color:white;
+  }
+.navbar-default .navbar-brand {
+  color:white;
+}
+.btn-success {
+    background-color: #b30000;
+    border-color: #b30000;
+}
+.btn-success:hover {
+  background-color:#cc0000;
+  border-color: #cc0000;
+}
+.navbar-default .navbar-text {
+  color: white;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #555;
+    background-color: #gold;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #555;
+    background-color: gold;
+}

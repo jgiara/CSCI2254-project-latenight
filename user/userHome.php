@@ -15,8 +15,8 @@ $general->logged_out_protect();
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
- 	<link rel="stylesheet" href="../css/styles.css">
  	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/styles.css">
 
 </head>
 <body>
@@ -59,16 +59,16 @@ $general->logged_out_protect();
 			<div class="row">
 		    	<div class="col-lg-12">
           			<p>
-            			<a href="./placeOrder.php" class="btn btn-sq-lg btn-primary">
+            			<a href="./placeOrder.php" class="btn btn-sq-lg btn-success">
                 		<i class="fa fa-cutlery fa-4x"></i><br/>Order
             			</a>
-            			<a href="./trackOrder.php" class="btn btn-sq-lg btn-primary">
+            			<a href="./trackOrder.php" class="btn btn-sq-lg btn-success">
                 		<i class="fa fa-angle-double-right fa-4x"></i><br/>Track my Order
             			</a>
-            			<a href="./orderHistory.php" class="btn btn-sq-lg btn-primary">
+            			<a href="./orderHistory.php" class="btn btn-sq-lg btn-success">
                 		<i class="fa fa-th-list fa-4x"></i><br/>Order History
             			</a>
-            			<a href="./userSettings.php" class="btn btn-sq-lg btn-primary">
+            			<a href="./userSettings.php" class="btn btn-sq-lg btn-success">
                 		<i class="fa fa-cog fa-4x"></i><br/>Settings
             			</a>
           			</p>
@@ -79,8 +79,8 @@ $general->logged_out_protect();
 
 <!-- scripts & BS/custom JS -->
 
-    <script src="../js/jquery.easing.min.js"></script>
-	<script src="../js/scripts.js"></script>
+
+	  <script src="../js/scripts.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
