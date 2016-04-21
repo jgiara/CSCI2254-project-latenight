@@ -59,7 +59,28 @@ $general->logged_out_protect();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                   
+                <!--button to select dining hall -->
+                  <p>
+                  <a href="#" class="btn btn-sq-lg btn-success">
+                    <i class="fa fa-cutlery fa-4x"></i><br/>Lower Live
+                  </a>
+                  <a href="#" class="btn btn-sq-lg btn-success">
+                    <i class="fa fa-cutlery fa-4x"></i><br/>McElroy Commons
+                  </a>
+                  <a href="#" class="btn btn-sq-lg btn-success">
+                    <i class="fa fa-cutlery fa-4x"></i><br/>Stuart Hall
+                  </a>
+                  <!-- menu to be hiddne -->
+                   <table id="menus" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Menu Item</th>
+                          <th>Price</th>
+                          <th>Availability</th>
+                          <th>Options</th>
+                          <th>Comment</th>
+                          <th>Add to Cart</th>
+                      </tr>
+      </table>
                 </div>
             </div>
         </div>
@@ -72,24 +93,19 @@ $general->logged_out_protect();
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
-		 $(window).scroll(function() {
-		    if ($(".navbar").offset().top > 50) {
-		        $(".navbar-fixed-top").addClass("top-nav-collapse");
-		    } else {
-		        $(".navbar-fixed-top").removeClass("top-nav-collapse");
-		    }
-		});
-
-		//jq for page scroll, using hte easing lib
-		$(function() {
-		    $('a.page-scroll').bind('click', function(event) {
-		        var $anchor = $(this);
-		        $('html, body').stop().animate({
-		            scrollTop: $($anchor.attr('href')).offset().top
-		        }, 1500, 'easeInOutExpo');
-		        event.preventDefault();
-		    });
-		});
+      $(document).ready(function(){
+    
+                //$("#maketable").click(function() {
+            $.getJSON( "../include/menuFetch.php" , function(data) {
+          
+              $.each(data, function(i, item){
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td>" + item.Availability + "</td><td>" + item.Price + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+          });
   	</script>
 </body>
 </html>

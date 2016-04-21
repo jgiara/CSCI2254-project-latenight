@@ -118,7 +118,23 @@ public function register( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id,
 		return $query->fetch();
 
 		}	
-	
+
+	public function menu_items() {
+
+		$query = $this->db->prepare("SELECT * FROM Items");
+
+		try{
+
+			$query->execute();
+
+			return $query->fetchAll();
+
+		} catch(PDOException $e){
+
+			die($e->getMessage());
+		}
+
+	}
 	
 		
 
