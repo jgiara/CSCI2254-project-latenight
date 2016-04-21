@@ -40,7 +40,7 @@ create table Orders (
 
 create table Items (
 	Id int(11) not null auto_increment primary key,
-        Name varchar(20) not null,
+        Name varchar(30) not null,
         Price float(3,2) not null, 
         Availability varchar(20) not null check(Availability in ('Mac', 'Lower', 'Stuart'))
 );
