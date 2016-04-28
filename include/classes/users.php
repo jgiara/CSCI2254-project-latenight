@@ -87,16 +87,16 @@ public function register( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id,
 	
 	} 
 
-	public function userdata($id) {
+	public function userdata($Eagle_Id) {
 
-		$query = $this->db->prepare("SELECT * FROM `clubUsers` WHERE `id`= ?");
-		$query->bindValue(1, $id);
+		$query = $this->db->prepare("SELECT * FROM `Users` WHERE `Eagle_Id`= ?");
+		$query->bindValue(1, $Eagle_Id);
 
 		try{
 
 			$query->execute();
 
-			return $query->fetchAll();
+			return $query->fetch();
 
 		} catch(PDOException $e){
 

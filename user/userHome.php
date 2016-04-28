@@ -3,6 +3,14 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$firstName  = $user['First_Name'];
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +48,7 @@ $general->logged_out_protect();
       
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navigation <span class="fa fa-angle-down"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, <?php echo $firstName; ?> <span class="fa fa-angle-down"></span></a>
           <ul class="dropdown-menu">
             <li><a href="userHome.php">Home</a></li>
             <li><a href="../typeSelect.php">Switch Account</a></li>
