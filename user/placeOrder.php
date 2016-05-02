@@ -61,13 +61,13 @@ $general->logged_out_protect();
                 <div class="col-lg-12">
                 <!--button to select dining hall -->
                   <p>
-                  <a href="#" class="btn btn-sq-lg btn-success">
+                  <a href="#" class="btn btn-sq-lg btn-success" id="lowermenu">
                     <i class="fa fa-cutlery fa-4x"></i><br/>Lower Live
                   </a>
-                  <a href="#" class="btn btn-sq-lg btn-success">
+                  <a href="#" class="btn btn-sq-lg btn-success" id="macmenu">
                     <i class="fa fa-cutlery fa-4x"></i><br/>McElroy Commons
                   </a>
-                  <a href="#" class="btn btn-sq-lg btn-success">
+                  <a href="#" class="btn btn-sq-lg btn-success" id="stuartmenu">
                     <i class="fa fa-cutlery fa-4x"></i><br/>Stuart Hall
                   </a>
                   <!-- menu to be hiddne -->
@@ -75,9 +75,6 @@ $general->logged_out_protect();
                       <tr>
                           <th>Menu Item</th>
                           <th>Price</th>
-                          <th>Availability</th>
-                          <th>Options</th>
-                          <th>Comment</th>
                           <th>Add to Cart</th>
                       </tr>
       </table>
@@ -93,13 +90,45 @@ $general->logged_out_protect();
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
-      $(document).ready(function(){
-    
-                //$("#maketable").click(function() {
-            $.getJSON( "../include/menuFetch.php" , function(data) {
-          
+      $("#lowermenu").on("click", function() {
+            
+            $.getJSON( "../include/menuFetch.php" , {
+              location: "Lower"
+            }, function(data) {
+              $('#menus').find('tr:gt(0)').remove();
+              //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
               $.each(data, function(i, item){
-                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td>" + item.Availability + "</td><td>" + item.Price + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+          });
+      $("#macmenu").on("click", function() {
+            
+            $.getJSON( "../include/menuFetch.php" , {
+              location: "Mac"
+            }, function(data) {
+              $('#menus').find('tr:gt(0)').remove();
+              //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
+              $.each(data, function(i, item){
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+          });
+      $("#stuartmenu").on("click", function() {
+            
+            $.getJSON( "../include/menuFetch.php" , {
+              location: "Stuart"
+            }, function(data) {
+              $('#menus').find('tr:gt(0)').remove();
+              //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
+              $.each(data, function(i, item){
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
               });
             })
             .fail(function() {
