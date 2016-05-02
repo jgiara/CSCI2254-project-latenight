@@ -91,27 +91,30 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    var items = "";
     $(document).ready(function() {
-        var items = "";
             $.getJSON( "../include/orderHistoryFetch.php" , {
               user: document.getElementById("userid").value
             }, function(data) {
               $.each(data, function(i, item){
                   items = "";
                   $.getJSON( "../include/orderHistoryItemsFetch.php" , {
-                      id: item.Id
+                      orderid: item.Id
                   }, function(dataa) {
                   $.each(dataa, function(k, itemm){
-                    //items += itemm.Name + ", ";
-                    items += "Hellllooo";
+                    items += itemm.Name + ", ";
+                    //items.push("Hellllooo");
                   });
+                  items = items.substring(0,items.length-2);
+                  $("<tr><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage
+                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td></tr>").appendTo('#orderhistory');
+                  items = "";
                 })
               .fail(function() {
                 console.log( "getJSON error" );
               });
             
-                $("<tr><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage
-                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td></tr>").appendTo('#orderhistory');
+                
               });
             })
             .fail(function() {
