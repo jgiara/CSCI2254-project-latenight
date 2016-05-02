@@ -103,7 +103,6 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                   }, function(dataa) {
                   $.each(dataa, function(k, itemm){
                     items += itemm.Name + ", ";
-                    //items.push("Hellllooo");
                   });
                   items = items.substring(0,items.length-2);
                   $("<tr><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage

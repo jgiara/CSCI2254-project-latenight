@@ -78,6 +78,7 @@ $general->logged_out_protect();
                           <th>Add to Cart</th>
                       </tr>
       </table>
+      <div id="testt"></div>
                 </div>
             </div>
         </div>
@@ -98,7 +99,7 @@ $general->logged_out_protect();
               $('#menus').find('tr:gt(0)').remove();
               //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
               $.each(data, function(i, item){
-                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><div id='but'><button class='btn btn-primary' id='addCart' value='1'>Add to Cart</button></div></td></tr>").appendTo('#menus');
               });
             })
             .fail(function() {
@@ -134,6 +135,13 @@ $general->logged_out_protect();
                 console.log( "getJSON error" );
             });
           });
+      $(document).ready(function() {
+        $("button").on("click", function() {
+          var itemid = $(this).attr("value");
+          alert("Clicked");
+          document.getElementById("testt").innerHTML = itemid;
+      });
+    });
   	</script>
 </body>
 </html>
