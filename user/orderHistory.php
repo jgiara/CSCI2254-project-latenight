@@ -3,6 +3,12 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$eagleid  = $user['Eagle_Id'];
+
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +65,20 @@ $general->logged_out_protect();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                   
+                   <!--See Logged-In User's Order History-->
+                   <table id="orderhistory" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Order Id</th>
+                          <th>Items</th>
+                          <th>Comments</th>
+                          <th>Delivery Charge</th>
+                          <th>Total Price</th>
+                          <th>Stage</th>
+                          <th>Submitted</th>
+                          <th>Fulfilled</th>
+                          <th>Payment Method</th>
+                      </tr>
+      </table>
                 </div>
             </div>
         </div>
@@ -72,6 +91,35 @@ $general->logged_out_protect();
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    $(document).ready(function() {
+        var items = "";
+            $.getJSON( "../include/orderHistoryFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+              $.each(data, function(i, item){
+                  items = "";
+                  $.getJSON( "../include/orderHistoryItemsFetch.php" , {
+                      id: item.Id
+                  }, function(dataa) {
+                  $.each(dataa, function(k, itemm){
+                    //items += itemm.Name + ", ";
+                    items += "Hellllooo";
+                  });
+                })
+              .fail(function() {
+                console.log( "getJSON error" );
+              });
+            
+                $("<tr><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage
+                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td></tr>").appendTo('#orderhistory');
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+    });
+
+
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");

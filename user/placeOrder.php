@@ -111,7 +111,6 @@ $general->logged_out_protect();
               location: "Mac"
             }, function(data) {
               $('#menus').find('tr:gt(0)').remove();
-              //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
               $.each(data, function(i, item){
                 $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
               });
