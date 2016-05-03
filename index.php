@@ -136,10 +136,10 @@ if (isset ( $_POST ['signin'] )) {
 
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Welcome to our boring page</h1>
+                    <img src="./img/fries.gif">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
                 </div>
             </div>

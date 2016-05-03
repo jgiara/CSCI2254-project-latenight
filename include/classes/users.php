@@ -163,22 +163,7 @@ public function recover($email) {
 
 }
 
-public function adminEmail($subject, $message, $memberType) {
 
-	$headers = "From: sendler@bc.edu" . "\r\n" .
-			"Cc: christian.sendler@gmail.com";
-
-	$select = $this->db->query("SELECT email FROM clubUsers WHERE memType='".$memberType."'");
-        $select = $select->fetchAll();
-        if(count($select) > 0) {
-            foreach($select AS $recipient) {
-                mail($recipient['email'], $subject, $message, $headers);
-            }
-        } else {
-            
-            die();
-        }
-    }
 
 } //close class
 
