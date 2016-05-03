@@ -66,26 +66,25 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 <div class="col-lg-12">
                 <!--button to select dining hall -->
                   <p>
-                  <a href="viewSubmitCart.php" class="btn btn-sq-lg btn-success" id="lowermenu">
-                    View Cart
+                  <a href="placeOrder.php" class="btn btn-sq-lg btn-success" >
+                    Add More Items</br>To Cart
                   </a>
-                  <a href="#" class="btn btn-sq-lg btn-success" id="lowermenu">
-                    <i class="fa fa-cutlery fa-4x"></i><br/>Lower Live
-                  </a>
-                  <a href="#" class="btn btn-sq-lg btn-success" id="macmenu">
-                    <i class="fa fa-cutlery fa-4x"></i><br/>McElroy Commons
-                  </a>
-                  <a href="#" class="btn btn-sq-lg btn-success" id="stuartmenu">
-                    <i class="fa fa-cutlery fa-4x"></i><br/>Stuart Hall
+                  <a href="trackOrder.php" class="btn btn-sq-lg btn-success" id="submitorder">
+                    Submit</br>Order
                   </a>
                   <!-- menu to be hiddne -->
-                   <table id="menus" class="display table table-bordered" cellspacing="0" width="100%">
+                   <table id="cart" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
                           <th>Menu Item</th>
                           <th>Price</th>
-                          <th>Add to Cart</th>
                       </tr>
-      </table>
+                  </table>
+                  <table id="prices" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Delivery Charge</th>
+                          <th>Total Price</th>
+                      </tr>
+                  </table>
       <div id="testt"></div>
                 </div>
             </div>
@@ -99,69 +98,23 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
-      $("#lowermenu").on("click", function() {
-            
-            $.getJSON( "../include/menuFetch.php" , {
-              location: "Lower"
-            }, function(data) {
-              $('#menus').find('tr:gt(0)').remove();
-              //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
-              $.each(data, function(i, item){
-                $("<tr id='"+item.Id+"'><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button class='btn btn-primary' id='addCart' value='" + item.Id + "'>Add to Cart</button></td></tr>").appendTo('#menus');
-              });
-            })
-            .fail(function() {
-                console.log( "getJSON error" );
-            });
-          });
-      $("#macmenu").on("click", function() {
-            
-            $.getJSON( "../include/menuFetch.php" , {
-              location: "Mac"
-            }, function(data) {
-              $('#menus').find('tr:gt(0)').remove();
-              $.each(data, function(i, item){
-                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
-              });
-            })
-            .fail(function() {
-                console.log( "getJSON error" );
-            });
-          });
-      $("#stuartmenu").on("click", function() {
-            
-            $.getJSON( "../include/menuFetch.php" , {
-              location: "Stuart"
-            }, function(data) {
-              $('#menus').find('tr:gt(0)').remove();
-              //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
-              $.each(data, function(i, item){
-                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='addCart'>Add to Cart</button></td></tr>").appendTo('#menus');
-              });
-            })
-            .fail(function() {
-                console.log( "getJSON error" );
-            });
-          });
+    var sum = 0;
       $(document).ready(function() {
-        $("#menus").on("click", "button", function() {
-          var itemid = $(this).closest("tr").attr("id");
-          var useridd = document.getElementById("userid").value;
-          $.post("../include/addToCart.php",
-            {
-            item : itemid,
-            user : useridd
-            },
-          function(data){
-            if(data) {
-              alert("The item has been added to your cart");
-            }
-            else {
-              alert("Insertion Failed");
-            }
-        });
-      });
-    });
+            
+            $.getJSON( "../include/cartFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+
+              $.each(data, function(i, item){
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td></tr>").appendTo('#cart');
+                sum += Number(item.Price);
+              });
+              $("<tr><td>$" + sum*0.1 + "</td><td>$" + sum + "</td></tr>").appendTo("#prices");
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+          });
   	</script>
 </body>
 </html>
