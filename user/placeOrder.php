@@ -66,7 +66,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 <div class="col-lg-12">
                 <!--button to select dining hall -->
                   <p>
-                  <a href="viewSubmitCart.php" class="btn btn-sq-lg btn-success">
+                  <a href="viewSubmitCart.php" class="btn btn-sq-lg btn-success"><i class="fa fa-shopping-cart fa-4x"></i><br/>
                     View Cart
                   </a>
                   <a href="#" class="btn btn-sq-lg btn-success" id="lowermenu">
