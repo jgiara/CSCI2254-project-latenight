@@ -3,6 +3,11 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$eagleid  = $user['Eagle_Id'];
+
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
 ?>
 
 <!DOCTYPE html>
@@ -137,9 +142,21 @@ $general->logged_out_protect();
           });
       $(document).ready(function() {
         $("#menus").on("click", "button", function() {
-          //var row = $(this).closest("tr");
-          alert($(this).closest("tr").attr("id"));
-          document.getElementById("testt").innerHTML = itemid;
+          var itemid = $(this).closest("tr").attr("id");
+          var useridd = document.getElementById("userid").value;
+          $.post("../include/addToCart.php",
+            {
+            item : itemid,
+            user : useridd
+            },
+          function(data){
+            if(data) {
+              alert("The item has been added to your cart");
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
       });
     });
   	</script>
