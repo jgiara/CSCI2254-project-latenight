@@ -73,7 +73,7 @@ if (isset ( $_POST ['signin'] )) {
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home | Project Late Night</title>
+	<title>Home | Munchies</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -93,7 +93,7 @@ if (isset ( $_POST ['signin'] )) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Late Night Delivery</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Munchies@BC</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -104,10 +104,7 @@ if (isset ( $_POST ['signin'] )) {
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#register">Sign Up</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#services">Delivery Locations</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">About Us</a>
@@ -136,33 +133,25 @@ if (isset ( $_POST ['signin'] )) {
 
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img src="./img/fries.gif">
+                    <h1 style="color:white;">Late night delivered: no questions asked.</h1>
+                    <br/>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- register Section -->
-    <section id="register" class="register-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Sign up to place an order!</h1>
-        		</div>
-        	</div>
-        </div>	
-    </section>
 
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Services Section</h1>
+                    <h1>Covering the Heights in mozz sticks</h1>
+                    <h1>since '16</h1>
                 </div>
             </div>
         </div>
@@ -173,7 +162,7 @@ if (isset ( $_POST ['signin'] )) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Contact Section</h1>
+                    <h1>Who are we?</h1>
                     	
                 </div>
             </div>

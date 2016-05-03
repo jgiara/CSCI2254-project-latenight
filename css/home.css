@@ -8,6 +8,7 @@ html {
     height: 100%;
 }
 
+
 @media(min-width:767px) {
     .navbar {
         padding: 20px 0;
@@ -26,27 +27,23 @@ html {
     padding-top: 150px;
     text-align: center;
     background: #fff;
+    background-image: url("../img/fries.gif");
+    background-size: 100%;
 }
 
-.register-section {
-    height: 100%;
-    padding-top: 100px;
-    text-align: center;
-    background: #eee;
-}
 
 .services-section {
     height: 100%;
     padding-top: 100px;
     text-align: center;
-    background: #fff;
+    background: #eee;
 }
 
 .contact-section {
     height: 100%;
     padding-top: 100px;
     text-align: center;
-    background: #eee;
+    background: #fff;
 }
 /* large button css */
 .btn-sq-lg {
