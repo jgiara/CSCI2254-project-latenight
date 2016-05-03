@@ -1,6 +1,6 @@
 <?php
 
-		$order = $_POST['orderif'];
+		$order = $_POST['order'];
 		$user = $_POST['user'];
 
 		$dbc = @mysqli_connect("localhost", "giara", "latenight", "giara")

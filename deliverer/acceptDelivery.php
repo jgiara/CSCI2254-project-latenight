@@ -39,7 +39,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./userHome.php">Late Night Delivery</a>
+      <a class="navbar-brand" href="./deliveryHome.php">Late Night Delivery</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,9 +49,9 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navigation <span class="fa fa-angle-down"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="./userHome.php">Home</a></li>
+            <li><a href="./deliveryHome.php">Home</a></li>
             <li><a href="../typeSelect.php">Switch Account</a></li>
-            <li><a href="./userSettings.php">Settings</a></li>
+            <li><a href="./deliverySettings.php">Settings</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="../index.php">Sign Out</a></li>
           </ul>
@@ -131,7 +131,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 },
               function(data){
                 if(data) {
-                  alert("You have accepted the order");
+                  //alert("You have accepted the order");
                 }
                 else {
                   alert("Insertion Failed");

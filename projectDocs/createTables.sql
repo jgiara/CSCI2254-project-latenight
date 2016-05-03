@@ -4,6 +4,7 @@ drop table Orders;
 drop table Items;
 drop table Order_Items;
 drop table Cart;
+drop table Deliveries;
 
 create table Users (
 	Eagle_Id int(11) not null primary key,
@@ -56,6 +57,12 @@ create table Order_Items (
 create table Cart (
         Id int(11) not null auto_increment primary key,
         Item_Id int(11) not null references Items(Id),
+        User_Id int(11) not null references Users(Eagle_Id)     
+);
+
+create table Deliveries (
+        Id int(11) not null auto_increment primary key,
+        Order_Id int(11) not null references Orders(Id),
         User_Id int(11) not null references Users(Eagle_Id)     
 );
         
