@@ -3,27 +3,33 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$eagleid  = $user['Eagle_Id'];
+
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head> 
 
-	<meta charset="utf-8">
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Select Role | Project Late Night</title>
-	<meta name="description" content="Boston College Late Night Delivery">
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order History | Project Late Night</title>
+  <meta name="description" content="Boston College Late Night Delivery">
 
- 	<link href="../css/bootstrap.min.css" rel="stylesheet">
- 	<link rel="stylesheet" href="../css/styles.css">
- 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
      <!-- Navigation -->
-	<nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -33,7 +39,7 @@ $general->logged_out_protect();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./userHome.php">Late Night Delivery</a>
+      <a class="navbar-brand" href="./deliveryHome.php">Late Night Delivery</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,7 +65,23 @@ $general->logged_out_protect();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                   
+                   <!--See Logged-In User's Order History-->
+                   <table id="pendingorders" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Order Id</th>
+                          <th>Items</th>
+                          <th>Dining Hall</th>
+                          <th>Delivery Location</th>
+                          <th>Comments</th>
+                          <th>Delivery Charge</th>
+                          <th>Total Price</th>
+                          <th>Stage</th>
+                          <th>Submitted</th>
+                          <th>Fulfilled</th>
+                          <th>Payment Method</th>
+                          <th>Next Stage</th>
+                      </tr>
+      </table>
                 </div>
             </div>
         </div>
@@ -68,28 +90,85 @@ $general->logged_out_protect();
 <!-- scripts & BS/custom JS -->
 
     <script src="../js/jquery.easing.min.js"></script>
-	<script src="../js/scripts.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  	<script src="../js/bootstrap.min.js"></script>
-  	<script type="text/javascript"> 
-		 $(window).scroll(function() {
-		    if ($(".navbar").offset().top > 50) {
-		        $(".navbar-fixed-top").addClass("top-nav-collapse");
-		    } else {
-		        $(".navbar-fixed-top").removeClass("top-nav-collapse");
-		    }
-		});
+  <script src="../js/scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript"> 
+    var items = "";
+    var diningHall = "";
+    var next = "";
+    var currStage = "";
+    $(document).ready(function() {
+            $.getJSON( "../include/activeDeliveryOrdersFetch.php", {
+              user: document.getElementById("userid").value
+            }, function(data) {
+              $.each(data, function(i, item){
+                  items = "";
+                  currStage = item.Stage;
+                  switch(currStage) {
+                    case 'In Progress': next = 'Out For Delivery'; break;
+                  }
+                  $.getJSON( "../include/orderHistoryItemsFetch.php" , {
+                      orderid: item.Id
+                  }, function(dataa) {
+                  $.each(dataa, function(k, itemm){
+                    items += itemm.Name + ", ";
+                    diningHall = itemm.Availability;
+                  });
+                  items = items.substring(0,items.length-2);
+                  $("<tr id='" + item.Id + ":" + next + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>" + next + "</button></td></tr>").appendTo('#pendingorders');
+                  items = "";
+                })
+              .fail(function() {
+                console.log( "getJSON error" );
+              });
+            
+                
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+      
+           /* $("#pendingorders").on("click", "button", function() {
+              var orderid = $(this).closest("tr").attr("id");
+              var useridd = document.getElementById("userid").value;
+              $.post("../include/addToActiveDelivery.php",
+                {
+                order : orderid,
+                user : useridd
+                },
+              function(data){
+                if(data) {
+                  alert("You have accepted the order");
+                }
+                else {
+                  alert("Insertion Failed");
+                }
+            });
+        });*/
+    });
+    
 
-		//jq for page scroll, using hte easing lib
-		$(function() {
-		    $('a.page-scroll').bind('click', function(event) {
-		        var $anchor = $(this);
-		        $('html, body').stop().animate({
-		            scrollTop: $($anchor.attr('href')).offset().top
-		        }, 1500, 'easeInOutExpo');
-		        event.preventDefault();
-		    });
-		});
-  	</script>
+
+     $(window).scroll(function() {
+        if ($(".navbar").offset().top > 50) {
+            $(".navbar-fixed-top").addClass("top-nav-collapse");
+        } else {
+            $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        }
+    });
+
+    //jq for page scroll, using hte easing lib
+    $(function() {
+        $('a.page-scroll').bind('click', function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+    </script>
 </body>
 </html>

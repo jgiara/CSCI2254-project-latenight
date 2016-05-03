@@ -66,23 +66,7 @@ $firstName  = $user['First_Name'];
        <div class="container">
 			<div class="row">
 		    	<div class="col-lg-12">
-          			<p>
-            			<a href="./placeOrder.php" class="btn btn-sq-lg btn-success">
-                		<i class="fa fa-cutlery fa-4x"></i><br/>Order
-            			</a>
-            			<a href="./trackOrder.php" class="btn btn-sq-lg btn-success">
-                		<i class="fa fa-angle-double-right fa-4x"></i><br/>Track my Order
-            			</a>
-            			<a href="./orderHistory.php" class="btn btn-sq-lg btn-success">
-                		<i class="fa fa-th-list fa-4x"></i><br/>Order History
-            			</a>
-                  <a href="./writeAReview.php" class="btn btn-sq-lg btn-success">
-                    Write A</br>Review
-                  </a>
-            			<a href="./userSettings.php" class="btn btn-sq-lg btn-success">
-                		<i class="fa fa-cog fa-4x"></i><br/>Settings
-            			</a>
-          			</p>
+          			
        			</div>
 			</div>
 		</div>

@@ -1,10 +1,9 @@
 <?php
-
 		$user = $_GET['user'];
 
 		$dbc = @mysqli_connect("localhost", "giara", "latenight", "giara")
 	       or die("Could not open menu db, " . mysqli_connect_error());
-		$query = "SELECT max(Id) as maxid FROM Orders";				
+		$query = "SELECT * FROM Orders where Fulfilled_By = $user and Stage not in ('Pending', 'Cancelled', 'Delivered') order by Id desc";				
 		$result = mysqli_query($dbc, $query) or die ("Error in Select" . mysqli_error($dbc));
 		
 		$menu_items = array();	// put the rows as objects in an array

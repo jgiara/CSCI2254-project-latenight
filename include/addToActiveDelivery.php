@@ -14,8 +14,17 @@
 		else {
 			$result = false;
 		}
+
+		$query = "update Orders set Stage = 'In Progress', Fulfilled_By = $user where Id = $order";
+
+		if(mysqli_query($dbc, $query)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
 	
-		$data_from_post = array('item' => $item);
+		$data_from_post = array('order' => $order);
 		echo json_encode($result);
 		mysqli_close($dbc);
 ?>
