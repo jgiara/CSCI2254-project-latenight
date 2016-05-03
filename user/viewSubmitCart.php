@@ -6,8 +6,10 @@ $general->logged_out_protect();
 
 $user     = $users->userdata($_SESSION['Eagle_Id']);
 $eagleid  = $user['Eagle_Id'];
+$addr = $user['Address'];
 
 echo "<input type='hidden' id='userid' value='$eagleid'/>";
+echo "<input type='hidden' id='address' value='$addr'/>";
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +87,13 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                           <th>Total Price</th>
                       </tr>
                   </table>
-      <div id="testt"></div>
+                  <input type="radio" name="payment" value="Cash" id="cash">
+                  <label for="cash">Cash</label>
+                  <input type="radio" checked="checked" name="payment" value="Meal Plan" id="mealplan">
+                  <label for="mealplan">Meal Plan</label></br>
+                  <label>Comments</label>
+                  <textarea rows="6" cols="50" id="comments" name="comments"></textarea>
+                  <!--<input type="text" id="testing" />-->
                 </div>
             </div>
         </div>
@@ -99,6 +107,10 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
     var sum = 0;
+    var deliverycharge = 0;
+    var items = [];
+    var pmethod;
+    var orderId = 0;
       $(document).ready(function() {
             
             $.getJSON( "../include/cartFetch.php" , {
@@ -108,13 +120,83 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
               $.each(data, function(i, item){
                 $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td></tr>").appendTo('#cart');
                 sum += Number(item.Price);
+                items.push(item.Item_Id);
               });
-              $("<tr><td>$" + sum*0.1 + "</td><td>$" + sum + "</td></tr>").appendTo("#prices");
+              deliverycharge = sum*0.1;
+              $("<tr><td>$" + (deliverycharge).toFixed(2) + "</td><td>$" + sum.toFixed(2) + "</td></tr>").appendTo("#prices");
             })
             .fail(function() {
                 console.log( "getJSON error" );
             });
           });
+      $("#submitorder").on("click", function() {
+        if(document.getElementById("cash").checked) {
+          pmethod = "Cash";
+        }
+        else {
+          pmethod = "Meal Plan";
+        }
+
+        $.post("../include/insertOrder.php",
+            {
+            user : document.getElementById("userid").value,
+            address: document.getElementById("address").value,
+            payment: pmethod,
+            comments: document.getElementById("comments").value,
+            delivery: deliverycharge,
+            price: sum
+            },
+          function(data){
+            if(data) {
+              //alert("Order Has Been Placed");
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
+
+        $.getJSON( "../include/maxOrderIdFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+
+              $.each(data, function(i, item){
+                orderId = item.maxid;
+                for(var j = 0; j < items.length; j++) {
+
+                  $.post("../include/insertOrderItems.php",
+                  {
+                  orderid : orderId,
+                  itemid: items[j]
+                  },
+                function(data){
+                  if(data) {
+                    //alert("Order Has Been Placed");
+                  }
+                  else {
+                    alert("Insertion Failed");
+                  }
+              });
+                }
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+            //document.getElementById("testing").value = orderId;
+        $.post("../include/deleteCart.php",
+          {
+            user : document.getElementById("userid").value
+          },
+          function(data){
+          if(data) {
+            alert("Your Order Has Been Placed");
+          }
+          else {
+            alert("Insertion Failed");
+          }
+        });
+        
+      });
   	</script>
 </body>
 </html>
