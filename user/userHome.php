@@ -77,6 +77,7 @@ $firstName  = $user['First_Name'];
                 		<i class="fa fa-th-list fa-4x"></i><br/>Order History
             			</a>
                   <a href="./writeAReview.php" class="btn btn-sq-lg btn-success">
+                    <i class="fa fa-pen fa-4x"></i><br/>
                     Write A</br>Review
                   </a>
             			<a href="./userSettings.php" class="btn btn-sq-lg btn-success">
