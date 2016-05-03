@@ -3,6 +3,11 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$eagleid  = $user['Eagle_Id'];
+
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +64,19 @@ $general->logged_out_protect();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                   
+                   <!--Track recent orders within last 24 hours-->
+                   <table id="trackorder" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Order Id</th>
+                          <th>Stage</th>
+                          <th>Submitted</th>
+                          <th>Deliverer First Name</th>
+                          <th>Deliverer Phone Number</th>
+                          <th>Delivery Charge</th>
+                          <th>Total Price</th>
+                          
+                      </tr>
+      </table>
                 </div>
             </div>
         </div>
@@ -72,6 +89,39 @@ $general->logged_out_protect();
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    var count = 0;
+    $(document).ready(function() {
+            $.getJSON( "../include/orderTrackFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+              $.each(data, function(i, item){
+                  count = 0;
+                  $.getJSON( "../include/orderTrackDelivererFetch.php" , {
+                      orderid: item.Id
+                  }, function(dataa) {
+                  $.each(dataa, function(k, itemm){
+                      count++;
+                      $("<tr><td>" + item.Id + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + itemm.First_Name + "</td><td>" + itemm.Phone
+                  + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td></tr>").appendTo('#trackorder');
+                  });
+                  if(count == 0) {
+                    $("<tr><td>" + item.Id + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>-</td><td>-</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td></tr>").appendTo('#trackorder');
+                  }
+                  count = 0;
+                  
+                })
+              .fail(function() {
+                console.log( "getJSON error" );
+              });
+            
+                
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+    });
+
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");

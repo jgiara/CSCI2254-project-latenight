@@ -99,7 +99,7 @@ $general->logged_out_protect();
               $('#menus').find('tr:gt(0)').remove();
               //$("<tr><th>Menu Item</th><th>Price</th><th>Add to Cart</th></tr>").appendTo('#menus');
               $.each(data, function(i, item){
-                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><div id='but'><button class='btn btn-primary' id='addCart' value='1'>Add to Cart</button></div></td></tr>").appendTo('#menus');
+                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button class='btn btn-primary' id='addCart' value='" + item.Id + "'>Add to Cart</button></td></tr>").appendTo('#menus');
               });
             })
             .fail(function() {
@@ -136,9 +136,9 @@ $general->logged_out_protect();
             });
           });
       $(document).ready(function() {
-        $("button").on("click", function() {
+        $("#menus").on("click", function() {
           var itemid = $(this).attr("value");
-          alert("Clicked");
+          alert($(this).find("button").attr("value"));
           document.getElementById("testt").innerHTML = itemid;
       });
     });
