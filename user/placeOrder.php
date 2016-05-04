@@ -64,11 +64,9 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                <h1>Select a dining hall to view the menu:</h1>
                 <!--button to select dining hall -->
                   <p>
-                  <a href="viewSubmitCart.php" class="btn btn-sq-lg btn-success"><i class="fa fa-shopping-cart fa-4x"></i><br/>
-                    View Cart
-                  </a>
                   <a href="#" class="btn btn-sq-lg btn-success" id="lowermenu">
                     <i class="fa fa-cutlery fa-4x"></i><br/>Lower Live
                   </a>
@@ -77,6 +75,9 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                   </a>
                   <a href="#" class="btn btn-sq-lg btn-success" id="stuartmenu">
                     <i class="fa fa-cutlery fa-4x"></i><br/>Stuart Hall
+                  </a>
+                  <a href="viewSubmitCart.php" class="btn btn-sq-lg btn-warning"><i class="fa fa-shopping-cart fa-4x"></i><br/>
+                    View Cart
                   </a>
                   <!-- menu to be hiddne -->
                    <table id="menus" class="display table table-bordered" cellspacing="0" width="100%">

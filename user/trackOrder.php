@@ -64,6 +64,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                <h1>Track the status of your current order:</h1>
                    <!--Track recent orders within last 24 hours-->
                    <table id="trackorder" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>

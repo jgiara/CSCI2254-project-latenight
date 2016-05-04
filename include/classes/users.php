@@ -65,7 +65,7 @@ public function register( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id,
 
 	public function login($Email, $Password) {
 
-		$query = $this->db->prepare("SELECT `Password`, `Eagle_Id` FROM `Users` WHERE `Email` = ?");
+		$query = $this->db->prepare("SELECT `Password`, `Eagle_Id`, `Type` FROM `Users` WHERE `Email` = ?");
 		$query->bindValue(1, $Email);
 		
 		try{
@@ -74,12 +74,34 @@ public function register( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id,
 			$data 				= $query->fetch();
 			$stored_password 	= $data['Password'];
 			$Id   				= $data['Eagle_Id'];
+			$Type   			= $data['Type'];
+
 			
 			if($stored_password === sha1($Password)){
-				return $Id;	
+				return $Id;
 			}else{
 				return false;	
 			}
+
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}
+	
+	} 
+
+	public function get_type($Email) {
+
+		$query = $this->db->prepare("SELECT `Type` FROM `Users` WHERE `Email` = ?");
+		$query->bindValue(1, $Email);
+		
+		try{
+			
+			$query->execute();
+			$data 				= $query->fetch();
+			$Type   			= $data['Type'];
+			
+			return $Type;
+			
 
 		}catch(PDOException $e){
 			die($e->getMessage());
@@ -108,7 +130,7 @@ public function register( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id,
 	  	  	 
 	public function get_users() {
 
-		$query = $this->db->prepare("SELECT * FROM `clubUsers`");
+		$query = $this->db->prepare("SELECT * FROM `Users`");
 		
 		try{
 			$query->execute();

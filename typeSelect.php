@@ -1,3 +1,13 @@
+<?php 
+ob_start();
+session_start();
+require './include/init.php';
+$general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -48,11 +58,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Pick an account:</h1>
-            			<a href="./user/userHome.php" class="btn btn-sq-lg btn-primary">
-                		<i class="fa fa-cutlery fa-4x"></i><br>Order
+            			<a href="./user/userHome.php" class="btn btn-sq-lg btn-success">
+                		<i class="fa fa-cutlery fa-4x"></i><br>Place an Order
             			</a>
-            			<a href="./deliverer/deliveryHome.php" class="btn btn-sq-lg btn-primary">
-                		<i class="fa fa-car fa-4x"></i><br>Deliver
+            			<a href="./deliverer/deliveryHome.php" class="btn btn-sq-lg btn-success">
+                		<i class="fa fa-car fa-4x"></i><br>Make Deliveries
             			</a>
                 </div>
             </div>

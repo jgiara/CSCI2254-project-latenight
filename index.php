@@ -45,6 +45,7 @@ if (isset ( $_POST ['signin'] )) {
  
   $Email_s = trim($_POST['Email_s']);
   $Password_s = trim($_POST['Password_s']);
+  $Type_s = $users->get_type($Email_s);
  
   if ($users->email_exists($Email_s) === false) {
     $errors_s[] = 'Sorry that email does not exist.';
@@ -58,8 +59,14 @@ if (isset ( $_POST ['signin'] )) {
  
       $_SESSION['Eagle_Id'] =  $login; // The user's id is now set into the user's session  in the form of $_SESSION['id'] see general.php for use 
       
-      #Redirect the user to home page
-      header('Location: ./user/userHome.php');
+          #Redirect the correct to home page
+          if ($Type_s === 'Both') {
+          header('Location: ./typeSelect.php');
+        }else if ($Type_s === 'Delivery Person'){
+            header('Location: ./deliverer/deliveryHome.php');
+        }else{
+            header('Location: ./user/userHome.php');
+        }
       exit();
     }
   }
@@ -110,15 +117,18 @@ if (isset ( $_POST ['signin'] )) {
                         <a class="page-scroll" href="#contact">About Us</a>
                     </li>
                 </ul>
-                <?php
+                
+                <form class="navbar-form navbar-right" method="POST">
+                    <div class="form-group">
+                    <?php
                             if (empty ( $errors_s ) == false) {
                                 echo '<p class="navbar-text">' . implode ( '</p><p class="navbar-text">', $errors_s ) . '</p>';
                             }
                     
                         ?>
-                <form class="navbar-form navbar-right" method="POST">
+                    </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="Email_s" placeholder="Username" required>
+                        <input type="email" class="form-control" name="Email_s" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" name="Password_s" placeholder="Password" required>

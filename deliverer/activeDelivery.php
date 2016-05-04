@@ -65,6 +65,8 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                <h1>Your active deliveries:</h1>
+                <h3>Remember to contact the customer if you have any questions</h3>
                    <!--See Logged-In User's Order History-->
                    <table id="pendingorders" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>

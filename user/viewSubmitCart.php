@@ -66,15 +66,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                <!--button to select dining hall -->
-                  <p>
-                  <a href="placeOrder.php" class="btn btn-sq-lg btn-success" >
-                    Add More Items</br>To Cart
-                  </a>
-                  <a href="trackOrder.php" class="btn btn-sq-lg btn-success" id="submitorder">
-                    Submit</br>Order
-                  </a>
-                  <!-- menu to be hiddne -->
+                 
                    <table id="cart" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
                           <th>Menu Item</th>
@@ -93,6 +85,13 @@ echo "<input type='hidden' id='address' value='$addr'/>";
                   <label for="mealplan">Meal Plan</label></br>
                   <label>Comments</label>
                   <textarea rows="6" cols="50" id="comments" name="comments"></textarea>
+                  <br>
+                   <a href="placeOrder.php" class="btn btn-success" >
+                    Back to Cart
+                  </a>
+                  <a href="trackOrder.php" class="btn btn-warning" id="submitorder">
+                    Check Out
+                  </a>
                   <!--<input type="text" id="testing" />-->
                 </div>
             </div>
