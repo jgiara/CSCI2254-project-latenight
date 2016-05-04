@@ -78,7 +78,6 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                           <th>Total Price</th>
                           <th>Stage</th>
                           <th>Submitted</th>
-                          <th>Fulfilled</th>
                           <th>Payment Method</th>
                           <th>Accept Delivery</th>
                       </tr>
@@ -109,7 +108,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                     diningHall = itemm.Availability;
                   });
                   items = items.substring(0,items.length-2);
-                  $("<tr id='" + item.Id + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>Accept Order</button></td></tr>").appendTo('#pendingorders');
+                  $("<tr id='" + item.Id + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>Accept Order</button></td></tr>").appendTo('#pendingorders');
                   items = "";
                 })
               .fail(function() {

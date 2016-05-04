@@ -15,6 +15,16 @@
 		else {
 			$result = false;
 		}
+
+		if($nextStage == 'Delivered') {
+			$query = "update Orders set Time_Fulfilled = now() where Id = $order";
+			if(mysqli_query($dbc, $query)) {
+			$result = true;
+			}
+			else {
+			$result = false;
+			}
+		}
 	
 		$data_from_post = array('order' => $order);
 		echo json_encode($result);

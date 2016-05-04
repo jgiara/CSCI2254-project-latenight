@@ -122,6 +122,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
                 items.push(item.Item_Id);
               });
               deliverycharge = sum*0.1;
+              sum += deliverycharge;
               $("<tr><td>$" + (deliverycharge).toFixed(2) + "</td><td>$" + sum.toFixed(2) + "</td></tr>").appendTo("#prices");
             })
             .fail(function() {
