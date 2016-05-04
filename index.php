@@ -148,7 +148,7 @@ if (isset ( $_POST ['signin'] )) {
                 <div class="col-lg-12">
                     <h1 style="color:white;">Late night delivered, no questions asked.</h1>
                     <br/>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
+                    <button id="acctButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
                 </div>
             </div>
         </div>
