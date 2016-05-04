@@ -154,7 +154,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
         $.post("../include/insertOrder.php",
             {
             user : document.getElementById("userid").value,
-            address: document.getElementById("address").value,
+            address: document.getElementById("deliveryloc").value,
             payment: pmethod,
             comments: document.getElementById("comments").value,
             delivery: deliverycharge,
