@@ -102,11 +102,11 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                   }, function(dataa) {
                   $.each(dataa, function(k, itemm){
                       count++;
-                      $("<tr><td>" + item.Id + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + itemm.First_Name + "</td><td>" + itemm.Phone
+                      $("<tr><td><a href='orderHistory.php'>" + item.Id + "</a></td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + itemm.First_Name + "</td><td>" + itemm.Phone
                   + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td></tr>").appendTo('#trackorder');
                   });
                   if(count == 0) {
-                    $("<tr><td>" + item.Id + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>-</td><td>-</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td></tr>").appendTo('#trackorder');
+                    $("<tr><td><a href='orderHistory.php'>" + item.Id + "</a></td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>-</td><td>-</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td></tr>").appendTo('#trackorder');
                   }
                   count = 0;
                   

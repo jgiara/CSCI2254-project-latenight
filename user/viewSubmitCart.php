@@ -83,6 +83,8 @@ echo "<input type='hidden' id='address' value='$addr'/>";
                   <label for="cash">Cash</label>
                   <input type="radio" checked="checked" name="payment" value="Meal Plan" id="mealplan">
                   <label for="mealplan">Meal Plan</label></br>
+                  <label>Delivery Location (Dorm Room)</label>
+                  <input type="text" id="deliveryloc"/></br>
                   <label>Comments</label>
                   <textarea rows="6" cols="50" id="comments" name="comments"></textarea>
                   <br>
@@ -128,6 +130,18 @@ echo "<input type='hidden' id='address' value='$addr'/>";
             .fail(function() {
                 console.log( "getJSON error" );
             });
+            $.getJSON( "../include/userLocFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+
+              $.each(data, function(i, item){
+                document.getElementById("deliveryloc").value = item.Address;
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+
           });
       $("#submitorder").on("click", function() {
         if(document.getElementById("cash").checked) {
