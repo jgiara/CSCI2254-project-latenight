@@ -82,7 +82,7 @@ if (isset ( $_POST ['signin'] )) {
   	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home | Munchies</title>
 	<meta name="description" content="Boston College Late Night Delivery">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
  	<link href="css/bootstrap.min.css" rel="stylesheet">
  	<link rel="stylesheet" href="css/home.css">
 
