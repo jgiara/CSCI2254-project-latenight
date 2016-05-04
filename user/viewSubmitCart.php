@@ -154,6 +154,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
             }
         });
 
+        
         $.getJSON( "../include/maxOrderIdFetch.php" , {
               user: document.getElementById("userid").value
             }, function(data) {

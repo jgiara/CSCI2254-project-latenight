@@ -68,7 +68,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 <h1>Your active deliveries:</h1>
                 <h3>Remember to contact the customer if you have any questions</h3>
                    <!--See Logged-In User's Order History-->
-                   <table id="pendingorders" class="display table table-bordered" cellspacing="0" width="100%">
+                   <table id="deliveryorders" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
                           <th>Order Id</th>
                           <th>Items</th>
@@ -106,10 +106,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
             }, function(data) {
               $.each(data, function(i, item){
                   items = "";
-                  currStage = item.Stage;
-                  switch(currStage) {
-                    case 'In Progress': next = 'Out For Delivery'; break;
-                  }
+                  
                   $.getJSON( "../include/orderHistoryItemsFetch.php" , {
                       orderid: item.Id
                   }, function(dataa) {
@@ -118,8 +115,14 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                     diningHall = itemm.Availability;
                   });
                   items = items.substring(0,items.length-2);
-                  $("<tr id='" + item.Id + ":" + next + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>" + next + "</button></td></tr>").appendTo('#pendingorders');
+                  currStage = item.Stage;
+                  switch(currStage) {
+                    case 'In Progress': next = 'Out For Delivery'; break;
+                    case 'Out For Delivery': next = 'Delivered'; break;
+                  }
+                  $("<tr id='" + item.Id + ":" + next + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>" + next + "</button></td></tr>").appendTo('#deliveryorders');
                   items = "";
+                  //next = "";
                 })
               .fail(function() {
                 console.log( "getJSON error" );
@@ -132,23 +135,29 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 console.log( "getJSON error" );
             });
       
-           /* $("#pendingorders").on("click", "button", function() {
-              var orderid = $(this).closest("tr").attr("id");
+           $("#deliveryorders").on("click", "button", function() {
+              var temp = $(this).closest("tr").attr("id");
+              var tempp = temp.split(":");
+              var orderid = Number(tempp[0]);
               var useridd = document.getElementById("userid").value;
-              $.post("../include/addToActiveDelivery.php",
-                {
+              var nextStage = tempp[1];
+
+              $.post("../include/updateActiveDelivery.php",
+               {
                 order : orderid,
-                user : useridd
+                user : useridd,
+                nextt : nextStage
                 },
               function(data){
                 if(data) {
-                  alert("You have accepted the order");
+                  alert("The Order is now " + nextStage);
+                  location.reload();
                 }
                 else {
-                  alert("Insertion Failed");
+                  alert("Update Failed");
                 }
             });
-        });*/
+        });
     });
     
 
