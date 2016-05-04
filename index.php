@@ -104,7 +104,7 @@ if (isset ( $_POST ['signin'] )) {
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Delivery Locations</a>
+                        <a class="page-scroll" href="#services">Delivery Info</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">About Us</a>
@@ -136,7 +136,7 @@ if (isset ( $_POST ['signin'] )) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 style="color:white;">Late night delivered: no questions asked.</h1>
+                    <h1 style="color:white;">Late night delivered, no questions asked.</h1>
                     <br/>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
                 </div>
@@ -154,6 +154,14 @@ if (isset ( $_POST ['signin'] )) {
                     <h1>since '16</h1>
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                     <h4>We are currently making deliveries to the Boston College campus only. We hope to expand to the off campus area in the near future, and we are currently
+                    pioneering technology to keep tenders and steak subs nice and toasty over long distances. Please check back regularly for updates on our delivery service. Our delivery
+                    hours match those of the dining halls, with our delivery times under 20 minutes. Eat up! </h4>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -163,7 +171,13 @@ if (isset ( $_POST ['signin'] )) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Who are we?</h1>
-                    	
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <h4> Simply put, we are three guys who love beer and fried food, and who were assigned a class project. Our goal was to help out the weekend hero or late night
+                    study groups in need of some game fuel. </h4>
                 </div>
             </div>
         </div>
