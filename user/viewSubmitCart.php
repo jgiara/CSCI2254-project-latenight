@@ -165,7 +165,12 @@ echo "<input type='hidden' id='address' value='$addr'/>";
         });
       });      
 
-      $("#submitorder").on("click", function() {
+      $("#submitorder").on("click", function(e) {
+        if(sum == 0) {
+          alert("Your cart is empty");
+          e.preventDefault();
+        }
+        else{
         if(document.getElementById("cash").checked) {
           pmethod = "Cash";
         }
@@ -232,7 +237,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
             alert("Insertion Failed");
           }
         });
-        
+        }
       });
   	</script>
 </body>
