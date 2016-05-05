@@ -61,6 +61,7 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
 			<div class="row">
 		    	<div class="col-lg-12">
             <h1>Use this table for customer support functions:</h1>
+            <br>
           			 <!--See Logged-In User's Order History-->
                    <table id="adminHistory" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
