@@ -146,6 +146,41 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
 
     });
 
+    $("#changepass").on("click", function() {
+      var pass = document.getElementById("password").value;
+      var repass = document.getElementById("repassword").value;
+
+      if(pass.length < 8) {
+        document.getElementById("passerror").innerHTML = "You password must be at least 8 characters";
+      }
+      else if(pass != repass) {
+        document.getElementById("passerror").innerHTML = "The passwords do not match";
+      }
+      else {
+        document.getElementById("passerror").innerHTML = "";
+        $.post("../include/updatePassword.php",
+            {
+            user : document.getElementById("userid").value,
+            password : pass 
+            },
+          function(data){
+            if(data) {
+              alert("Your Password Have Been Updated");
+              location.reload();
+
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
+      }
+
+      
+
+    });
+
+
+
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");
