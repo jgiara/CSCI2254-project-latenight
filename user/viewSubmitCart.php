@@ -72,6 +72,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
                       <tr>
                           <th>Menu Item</th>
                           <th>Price</th>
+                          <th>Remove Item</th>
                       </tr>
                   </table>
                   <table id="prices" class="display table table-bordered" cellspacing="0" width="100%">
@@ -120,7 +121,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
             }, function(data) {
 
               $.each(data, function(i, item){
-                $("<tr><td>" + item.Name + "</td><td>" + item.Price + "</td></tr>").appendTo('#cart');
+                $("<tr id='" + item.Item_Id + "'><td>" + item.Name + "</td><td>" + item.Price + "</td><td><button onclick='#' class='btn btn-primary' id='delete'>Remove From Cart</button></td></tr>").appendTo('#cart');
                 sum += Number(item.Price);
                 items.push(item.Item_Id);
               });
@@ -144,6 +145,26 @@ echo "<input type='hidden' id='address' value='$addr'/>";
             });
 
           });
+
+      $("#cart").on("click", "button", function() {
+        var itemid = $(this).closest("tr").attr("id");
+
+        $.post("../include/removeItemFromCart.php",
+            {
+            user : document.getElementById("userid").value,
+            item : itemid
+            },
+          function(data){
+            if(data) {
+              alert("Item has been removed");
+              location.reload();
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
+      });      
+
       $("#submitorder").on("click", function() {
         if(document.getElementById("cash").checked) {
           pmethod = "Cash";
