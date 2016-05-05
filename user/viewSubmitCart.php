@@ -19,11 +19,8 @@ echo "<input type='hidden' id='address' value='$addr'/>";
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-	<title>Place Order| Munchies</title>
-=======
-	<title>Cart| Project Late Night</title>
->>>>>>> origin/master
+  	<title>Cart| Project Late Night</title>
+
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
