@@ -48,8 +48,8 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, Admin <span class="fa fa-angle-down"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="userHome.php">Home</a></li>
-            <li><a href="adminSettings.php">Settings</a></li>
+            <li><a href="./adminHome.php">Home</a></li>
+            <li><a href="./adminSettings.php">Settings</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="../logout.php">Sign Out</a></li>
           </ul>
@@ -64,6 +64,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 			<div class="row">
 		    	<div class="col-lg-12">
             <h1>Use this table for customer support functions:</h1>
+
           			<!--insert table here-->
                 <table id="history" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
@@ -82,6 +83,9 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                           <th>Review Comments</th>
                       </tr>
       </table>
+
+            <br>
+
        			</div>
 			</div>
 		</div>
@@ -94,6 +98,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+
 		 var items = "";
     $(document).ready(function() {
             $.getJSON( "../include/allOrdersFetch.php" , {
@@ -128,6 +133,13 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 
 
      $(window).scroll(function() {
+
+    //table populate
+    
+
+    //navbar min
+		 $(window).scroll(function() {
+
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");
 		    } else {
@@ -145,6 +157,8 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 		        event.preventDefault();
 		    });
 		});
+
+
 
   	</script>
 </body>
