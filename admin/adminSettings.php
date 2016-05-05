@@ -57,6 +57,8 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navigation <span class="fa fa-angle-down"></span></a>
           <ul class="dropdown-menu">
             <li><a href="./adminHome.php">Home</a></li>
+            <li><a href="./adminUsers.php">View All Users</a></li>
+            <li><a href="./deliveryRating.php">Manage Users</a></li>
             <li><a href="./adminSettings.php">Settings</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="../logout.php">Sign Out</a></li>
