@@ -73,6 +73,8 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                           <th>Order Id</th>
                           <th>Items</th>
                           <th>Dining Hall</th>
+                          <th>Customer Name</th>
+                          <th>Customer Phone</th>
                           <th>Delivery Location</th>
                           <th>Comments</th>
                           <th>Delivery Charge</th>
@@ -119,7 +121,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                     case 'In Progress': next = 'Out For Delivery'; break;
                     case 'Out For Delivery': next = 'Delivered'; break;
                   }
-                  $("<tr id='" + item.Id + ":" + next + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>" + next + "</button></td></tr>").appendTo('#deliveryorders');
+                  $("<tr id='" + item.Id + ":" + next + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + diningHall + "</td><td>"+ item.First_Name + "</td><td>"+ item.Phone + "</td><td>"+ item.Delivery_Location + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Payment_Method + "</td><td><button onclick='#' class='btn btn-primary' id='acceptOrder'>" + next + "</button></td></tr>").appendTo('#deliveryorders');
                   items = "";
                   //next = "";
                 })
