@@ -125,7 +125,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
       var loc = document.getElementById("address").value;
       var pnumber = document.getElementById("phone").value;
 
-      $.post("../include/updateUserSettings.php",
+      $.post("../include/updateSettings.php",
             {
             user : document.getElementById("userid").value,
             fn: firstname,
