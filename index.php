@@ -174,7 +174,7 @@ if (isset ( $_POST ['signin'] )) {
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-md-6 col-md-offset-3">
                      <h4>We are currently making deliveries to the Boston College campus only. We hope to expand to the off campus area in the near future, and we are currently
                     pioneering technology to keep tenders and steak subs nice and toasty over long distances. Please check back regularly for updates on our delivery service. Our delivery
                     hours match those of the dining halls, with our delivery times under 20 minutes. Eat up! </h4>
@@ -201,7 +201,7 @@ if (isset ( $_POST ['signin'] )) {
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-md-6 col-md-offset-3">
                     <h4> Simply put, we are three guys who love beer and fried food, and who were assigned a class project. Our goal was to help out the weekend hero or late night
                     study groups in need of some game fuel. </h4>
                 </div>
