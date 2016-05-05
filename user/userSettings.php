@@ -60,7 +60,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
             <li><a href="../typeSelect.php">Switch Account</a></li>
             <li><a href="./userSettings.php">Settings</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="../index.php">Sign Out</a></li>
+            <li><a href="../logout.php">Sign Out</a></li>
           </ul>
         </li>
       </ul>
@@ -74,20 +74,20 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
                 <div class="col-lg-12">
                    <h1>Your Settings</h1>
                    <div id="set">
-                   <label>Eagle ID</label><input type="text" id="eagleid" readonly/></br></br>
-                   <label>First Name</label><input type="text" id="first" /></br></br>
-                   <label>Last Name</label><input type="text" id="last" /></br></br>
-                   <label>Address (Dorm Room)</label><input type="text" id="address" /></br></br>
-                   <label>Phone Number</label><input type="text" id="phone" /></br></br>
-                   <button id="showpass">Change Password</button>
-                   <button id="updatesettings">Update Settings</button>
+                   <label>Eagle ID: </label> <input type="text" id="eagleid" readonly/></br></br>
+                   <label>First Name: </label> <input type="text" id="first" /></br></br>
+                   <label>Last Name: </label> <input type="text" id="last" /></br></br>
+                   <label>Address (Dorm Room Name/Number): </label> <input type="text" id="address" /></br></br>
+                   <label>Phone Number: </label> <input type="text" id="phone" /></br></br>
+                   <button class="btn btn-success"id="showpass">Change Password</button>
+                   <button class="btn btn-warning"id="updatesettings">Update Settings</button>
                    </div>
                    <div id="pass">
-                   <label>New Password</label><input type="password" id="password" />
+                   <label>New Password: </label> <input type="password" id="password" />
                    <div id="passerror"></div></br></br>
-                   <label>Re-Enter New Password</label><input type="password" id="repassword" /></br></br>
-                   <button id="backset">Back To Settings</button>
-                   <button id="changepass">Update Password</button>
+                   <label>Re-Enter New Password: </label> <input type="password" id="repassword" /></br></br>
+                   <button class="btn btn-success"id="backset">Back To Settings</button>
+                   <button class="btn btn-warning"id="changepass">Update Password</button>
                  </div>
                    
                 </div>
