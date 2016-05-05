@@ -52,7 +52,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
             <li><a href="../typeSelect.php">Switch Account</a></li>
             <li><a href="./userSettings.php">Settings</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="../index.php">Sign Out</a></li>
+            <li><a href="../logout.php">Sign Out</a></li>
           </ul>
         </li>
       </ul>
