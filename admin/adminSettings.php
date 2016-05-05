@@ -46,7 +46,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./userHome.php"><b>Munchies@BC</b></a>
+      <a class="navbar-brand" href="./adminHome.php"><b>Munchies@BC</b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
