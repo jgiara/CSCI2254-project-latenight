@@ -64,7 +64,7 @@ $firstName  = $user['First_Name'];
           <div class="col-lg-12">
                 <p>
                   <a href="./activeDelivery.php" class="btn btn-sq-lg btn-success">
-                    <i class="fa fa-cutlery fa-4x"></i><br/>View Active Delivery
+                    <i class="fa fa-h hourglass fa-4x"></i><br/>View Active Delivery
                   </a>
                   <a href="./acceptDelivery.php" class="btn btn-sq-lg btn-success">
                     <i class="fa fa-angle-double-right fa-4x"></i><br/>Accept Delivery

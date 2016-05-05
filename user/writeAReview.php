@@ -81,7 +81,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
               </table>
               </div>
               <div id="write">
-                <label>How satisfied were you?</label>
+                <label>How satisfied were you? </label> 
                 <input type="radio" id="one" name="star" value="1" />
                 <label for="one">*</label>
                 <input type="radio" id="two" name="star" value="2" />
@@ -92,11 +92,11 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 <label for="four">****</label>
                 <input type="radio" checked = "checked" id="five" name="star" value="5" />
                 <label for="five">*****</label> </br> </br>
-                <label>Comments</label>
+                <label>Comments: </label> 
                   <textarea rows="6" cols="50" id="comments" name="comments"></textarea>
                   <br>
-                  <button id="back">Back To Review Select</button>
-                <button id="submitreview">Submit Review</button>
+                  <button class="btn btn-danger" id="back">Back To Review Select</button>
+                <button class="btn btn-success" id="submitreview">Submit Review</button>
               </div>
        			</div>
 			</div>

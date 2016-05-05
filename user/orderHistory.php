@@ -65,7 +65,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                <h1>View your past orders</h1>
+                <h1>View your past orders:</h1>
                    <!--See Logged-In User's Order History-->
                    <table id="orderhistory" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
