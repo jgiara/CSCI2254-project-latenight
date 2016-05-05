@@ -203,7 +203,7 @@ echo "<input type='hidden' id='orderentered'/>";
       });
 
         $("#orderentered").on("change", function() {
-          
+          setTimeout(function() {
         $.getJSON( "../include/maxOrderIdFetch.php" , {
               user: document.getElementById("userid").value
             }, function(data) {
@@ -245,7 +245,7 @@ echo "<input type='hidden' id='orderentered'/>";
             alert("Insertion Failed");
           }
         });
-        
+        }, 1000);
       });
   	</script>
 </body>
