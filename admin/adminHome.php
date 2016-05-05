@@ -72,7 +72,7 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
                           <th>Stage</th>
                           <th>Payment Method</th>
                           <th>Stars</th>
-                          <th>Reivew Comment</th>
+                          <th>Review Comment</th>
                       </tr>
                     </table>
        			</div>
