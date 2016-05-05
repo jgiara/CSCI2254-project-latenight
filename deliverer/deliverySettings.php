@@ -76,6 +76,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
             <div class="row">
                 <div class="col-lg-12">
                    <h1>Your Settings</h1>
+                   <br>
                    <div id="set">
                    <label>Eagle ID</label><input type="text" id="eagleid" readonly/></br></br>
                    <label>First Name</label><input type="text" id="first" /></br></br>
@@ -89,8 +90,8 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
                    <label>New Password</label><input type="password" id="password" />
                    <div id="passerror"></div></br></br>
                    <label>Re-Enter New Password</label><input type="password" id="repassword" /></br></br>
-                   <button id="backset">Back To Settings</button>
-                   <button id="changepass">Update Password</button>
+                   <button class="btn btn-success"id="backset">Back To Settings</button>
+                   <button class="btn btn-warning"id="changepass">Update Password</button>
                  </div>
                    
                 </div>
