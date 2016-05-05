@@ -3,6 +3,19 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$eagleid  = $user['Eagle_Id'];
+$fn = $user['First_Name'];
+$ln = $user['Last_Name'];
+$addr = $user['Address'];
+$phn = $user['Phone'];
+
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
+echo "<input type='hidden' id='userfirst' value='$fn'/>";
+echo "<input type='hidden' id='userlast' value='$ln'/>";
+echo "<input type='hidden' id='useraddress' value='$addr'/>";
+echo "<input type='hidden' id='userphone' value='$phn'/>";
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +72,23 @@ $general->logged_out_protect();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                   <h1>Your Settings</h1>
+                   <div id="set">
+                   <label>Eagle ID</label><input type="text" id="eagleid" readonly/></br></br>
+                   <label>First Name</label><input type="text" id="first" /></br></br>
+                   <label>Last Name</label><input type="text" id="last" /></br></br>
+                   <label>Address (Dorm Room)</label><input type="text" id="address" /></br></br>
+                   <label>Phone Number</label><input type="text" id="phone" /></br></br>
+                   <button id="showpass">Change Password</button>
+                   <button id="updatesettings">Update Settings</button>
+                   </div>
+                   <div id="pass">
+                   <label>New Password</label><input type="password" id="password" />
+                   <div id="passerror"></div></br></br>
+                   <label>Re-Enter New Password</label><input type="password" id="repassword" /></br></br>
+                   <button id="backset">Back To Settings</button>
+                   <button id="changepass">Update Password</button>
+                 </div>
                    
                 </div>
             </div>
@@ -72,6 +102,85 @@ $general->logged_out_protect();
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    $(document).ready(function() {
+      document.getElementById("eagleid").value = document.getElementById("userid").value;
+      document.getElementById("first").value = document.getElementById("userfirst").value;
+      document.getElementById("last").value = document.getElementById("userlast").value;
+      document.getElementById("address").value = document.getElementById("useraddress").value;
+      document.getElementById("phone").value = document.getElementById("userphone").value;
+      $("#pass").toggle();
+    });
+    $("#showpass").on("click", function() {
+      $("#pass").toggle();
+      $("#set").toggle();
+    });
+    $("#backset").on("click", function() {
+      $("#pass").toggle();
+      $("#set").toggle();
+    });
+
+    $("#updatesettings").on("click", function() {
+      var firstname = document.getElementById("first").value;
+      var lastname = document.getElementById("last").value;
+      var loc = document.getElementById("address").value;
+      var pnumber = document.getElementById("phone").value;
+
+      $.post("../include/updateSettings.php",
+            {
+            user : document.getElementById("userid").value,
+            fn: firstname,
+            ln: lastname,
+            addr: loc,
+            phone: pnumber
+            },
+          function(data){
+            if(data) {
+              alert("Your Setting Have Been Updated");
+              location.reload();
+
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
+
+    });
+
+    $("#changepass").on("click", function() {
+      var pass = document.getElementById("password").value;
+      var repass = document.getElementById("repassword").value;
+
+      if(pass.length < 8) {
+        document.getElementById("passerror").innerHTML = "You password must be at least 8 characters";
+      }
+      else if(pass != repass) {
+        document.getElementById("passerror").innerHTML = "The passwords do not match";
+      }
+      else {
+        document.getElementById("passerror").innerHTML = "";
+        $.post("../include/updatePassword.php",
+            {
+            user : document.getElementById("userid").value,
+            password : pass 
+            },
+          function(data){
+            if(data) {
+              alert("Your Password Have Been Updated");
+              location.reload();
+
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
+      }
+
+      
+
+    });
+
+
+
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");

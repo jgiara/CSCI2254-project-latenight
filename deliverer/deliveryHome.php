@@ -7,10 +7,6 @@ $general->logged_out_protect();
 $user     = $users->userdata($_SESSION['Eagle_Id']);
 $firstName  = $user['First_Name'];
 
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
