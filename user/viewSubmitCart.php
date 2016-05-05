@@ -10,6 +10,7 @@ $addr = $user['Address'];
 
 echo "<input type='hidden' id='userid' value='$eagleid'/>";
 echo "<input type='hidden' id='address' value='$addr'/>";
+echo "<input type='hidden' id='orderentered'/>";
 ?>
 
 <!DOCTYPE html>
@@ -170,7 +171,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
           alert("Your cart is empty");
           e.preventDefault();
         }
-        else{
+        else {
         if(document.getElementById("cash").checked) {
           pmethod = "Cash";
         }
@@ -190,13 +191,19 @@ echo "<input type='hidden' id='address' value='$addr'/>";
           function(data){
             if(data) {
               //alert("Order Has Been Placed");
+              //document.getElementById("orderentered").value = "Yes";
             }
             else {
               alert("Insertion Failed");
             }
         });
+        $("#orderentered").val("Yes").trigger('change');
+        e.preventDefault();
+        }
+      });
 
-        
+        $("#orderentered").on("change", function() {
+          
         $.getJSON( "../include/maxOrderIdFetch.php" , {
               user: document.getElementById("userid").value
             }, function(data) {
@@ -232,12 +239,13 @@ echo "<input type='hidden' id='address' value='$addr'/>";
           function(data){
           if(data) {
             alert("Your Order Has Been Placed");
+            window.location.replace("./trackOrder.php");
           }
           else {
             alert("Insertion Failed");
           }
         });
-        }
+        
       });
   	</script>
 </body>
