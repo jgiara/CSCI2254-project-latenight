@@ -9,8 +9,6 @@ $firstName  = $user['First_Name'];
 
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +64,32 @@ $firstName  = $user['First_Name'];
        <div class="container">
 			<div class="row">
 		    	<div class="col-lg-12">
-          			
+          			<h1>Write A Review</h1>
+                <div id="selectorder">
+                <table id="orderhistory" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Order Id</th>
+                          <th>Items</th>
+                          <th>Comments</th>
+                          <th>Submitted</th>
+                          <th>Fulfilled</th>
+                          <th>Review</th>
+                      </tr>
+              </table>
+              </div>
+              <div id="write">
+                <label>How satisfied were you?</label>
+                <input type="radio" id="one" name="one" value="1" />
+                <label for="one">*</label>
+                <input type="radio" id="two" name="two" value="2" />
+                <label for="two">**</label>
+                <input type="radio" id="one" name="three" value="3" />
+                <label for="three">***</label>
+                <input type="radio" id="one" name="four" value="4" />
+                <label for="four">****</label>
+                <input type="radio" checked = "checked" id="one" name="five" value="5" />
+                <label for="five">*****</label>
+              </div>
        			</div>
 			</div>
 		</div>
@@ -79,6 +102,12 @@ $firstName  = $user['First_Name'];
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    $(document).ready(function() {
+      $("#write").toggle();
+    });
+
+
+
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");
