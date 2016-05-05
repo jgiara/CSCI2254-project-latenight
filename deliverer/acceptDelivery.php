@@ -18,7 +18,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Order History | Project Late Night</title>
+	<title>Order History | Munchies</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./deliveryHome.php">Late Night Delivery</a>
+      <a class="navbar-brand" href="./deliveryHome.php">L<b>Munchies@BC</b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -19,7 +19,7 @@ $firstName  = $user['First_Name'];
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home | Project Late Night</title>
+	<title>Home | Munchies</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@ $firstName  = $user['First_Name'];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./userHome.php">Late Night Delivery</a>
+      <a class="navbar-brand" href="./userHome.php">Munchies@BC</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

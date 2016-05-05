@@ -160,7 +160,7 @@ public function register( $Password, $Email, $First_Name, $Last_Name, $Eagle_Id,
 	
 		
 
-public function recover($email) {
+public function recover($Email) {
 
 	$letters = 'abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 	$newpass = substr(str_shuffle($letters), 0, 8);
@@ -170,13 +170,13 @@ public function recover($email) {
 	$headers = "From: sendler@bc.edu" . "\r\n" .
 			"Cc: christian.sendler@gmail.com.com";
 
-	$query = $this->db->prepare("UPDATE clubUsers SET password='$encryptpass' WHERE `email`= ?");
-	$query->bindValue(1, $email);
+	$query = $this->db->prepare("UPDATE Users SET Password='$encryptpass' WHERE `Email`= ?");
+	$query->bindValue(1, $Email);
 
 		try{
 			$query->execute();
 
-			mail($email,"BC Photo Club: Password Recovery",$message, $headers);
+			mail($email,"Munchies@BC: Password Reset",$message, $headers);
 
 		
 		}catch(PDOException $e){

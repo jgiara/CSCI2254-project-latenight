@@ -15,7 +15,7 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Select Role | Project Late Night</title>
+	<title>Select Role | Munchies</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="./index.php">Late Night Delivery</a>
+                <a class="navbar-brand page-scroll" href="./index.php"><b>Munchies@BC</b></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

@@ -53,7 +53,7 @@ if (isset ( $_POST ['signin'] )) {
  
     $login = $users->login($Email_s, $Password_s);
     if ($login === false) {
-      $errors_s[] = 'Incorrect login information.';
+      $errors_s[] = 'Incorrect login information. <a href="forgotPass.php">Reset password?</a>';
     }else {
       // username/password is correct and the login method of the $users object returns the user id, which is stored in $login.
  
@@ -100,7 +100,7 @@ if (isset ( $_POST ['signin'] )) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Munchies@BC</a>
+                <a class="navbar-brand page-scroll" href="#page-top" style="font-size:150%;"><b>Munchies@BC</b></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -148,7 +148,7 @@ if (isset ( $_POST ['signin'] )) {
                 <div class="col-lg-12">
                     <h1 style="color:white;">Late night delivered, no questions asked.</h1>
                     <br/>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
+                    <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
                 </div>
             </div>
         </div>
@@ -162,6 +162,12 @@ if (isset ( $_POST ['signin'] )) {
                 <div class="col-lg-12">
                     <h1>Covering the Heights in mozz sticks</h1>
                     <h1>since '16</h1>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="center-block">
+                    <img src="./img/deliveryTruck.png" class="img-responsive center-block" alt="Delivery">
                 </div>
             </div>
             <br>
@@ -181,6 +187,12 @@ if (isset ( $_POST ['signin'] )) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Who are we?</h1>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="center-block">
+                    <img src="./img/drinks.png" class="img-responsive center-block" alt="Drinks">
                 </div>
             </div>
             <br>
@@ -283,6 +295,7 @@ if (isset ( $_POST ['signin'] )) {
 		        event.preventDefault();
 		    });
 		});
+
   	</script>
 
 
