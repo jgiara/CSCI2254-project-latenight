@@ -64,6 +64,8 @@ if (isset ( $_POST ['signin'] )) {
           header('Location: ./typeSelect.php');
         }else if ($Type_s === 'Delivery Person'){
             header('Location: ./deliverer/deliveryHome.php');
+        }else if ($Type_s === 'Admin') {
+            header('Location: ./admin/adminHome.php'); 
         }else{
             header('Location: ./user/userHome.php');
         }
