@@ -6,7 +6,8 @@ $general->logged_out_protect();
 
 $user     = $users->userdata($_SESSION['Eagle_Id']);
 $firstName  = $user['First_Name'];
-
+$eagleid  = $user['Eagle_Id'];
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
 
 
 ?>
@@ -64,6 +65,8 @@ $firstName  = $user['First_Name'];
        <div class="container">
 			<div class="row">
 		    	<div class="col-lg-12">
+              <input type='hidden' id='orderid'/>
+              <input type='hidden' id='deliverer'/>
           			<h1>Write A Review</h1>
                 <div id="selectorder">
                 <table id="orderhistory" class="display table table-bordered" cellspacing="0" width="100%">
@@ -79,16 +82,21 @@ $firstName  = $user['First_Name'];
               </div>
               <div id="write">
                 <label>How satisfied were you?</label>
-                <input type="radio" id="one" name="one" value="1" />
+                <input type="radio" id="one" name="star" value="1" />
                 <label for="one">*</label>
-                <input type="radio" id="two" name="two" value="2" />
+                <input type="radio" id="two" name="star" value="2" />
                 <label for="two">**</label>
-                <input type="radio" id="one" name="three" value="3" />
+                <input type="radio" id="three" name="star" value="3" />
                 <label for="three">***</label>
-                <input type="radio" id="one" name="four" value="4" />
+                <input type="radio" id="four" name="star" value="4" />
                 <label for="four">****</label>
-                <input type="radio" checked = "checked" id="one" name="five" value="5" />
-                <label for="five">*****</label>
+                <input type="radio" checked = "checked" id="five" name="star" value="5" />
+                <label for="five">*****</label> </br> </br>
+                <label>Comments</label>
+                  <textarea rows="6" cols="50" id="comments" name="comments"></textarea>
+                  <br>
+                  <button id="back">Back To Review Select</button>
+                <button id="submitreview">Submit Review</button>
               </div>
        			</div>
 			</div>
@@ -104,7 +112,91 @@ $firstName  = $user['First_Name'];
   	<script type="text/javascript"> 
     $(document).ready(function() {
       $("#write").toggle();
+      
+
+      $.getJSON( "../include/orderHistoryReviewFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+              $.each(data, function(i, item){
+                  items = "";
+                  $.getJSON( "../include/orderHistoryItemsFetch.php" , {
+                      orderid: item.Id
+                  }, function(dataa) {
+                  $.each(dataa, function(k, itemm){
+                    items += itemm.Name + ", ";
+                  });
+                  items = items.substring(0,items.length-2);
+                  $("<tr id='" + item.Id +":" + item.Fulfilled_By + "'><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments
+                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Time_Fulfilled + "</td><td><button onclick='#' class='btn btn-primary' id='thisreview'>Review This Order</button></td></tr>").appendTo('#orderhistory');
+                  items = "";
+                })
+              .fail(function() {
+                console.log( "getJSON error" );
+              });
+            
+                
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+
     });
+
+  $("#back").on("click", function() {
+    $("#selectorder").toggle();
+          $("#write").toggle();
+  });
+  
+    $("#orderhistory").on("click", "button", function() {
+          $("#selectorder").toggle();
+          $("#write").toggle();
+          var temp = $(this).closest("tr").attr("id");
+          temp = temp.split(":");
+          var orderid = temp[0];
+          var deliverer = temp[1];
+          document.getElementById("orderid").value = orderid;
+          document.getElementById("deliverer").value = deliverer;
+    });
+
+    $("#submitreview").on("click", function() {
+          var orderid = document.getElementById("orderid").value;
+          var deliverer = document.getElementById("deliverer").value;
+          var useridd = document.getElementById("userid").value;
+          var stars = 0;
+          if(document.getElementById("one").checked) {
+            stars = 1;
+          }
+          else if(document.getElementById("two").checked) {
+            stars = 2;
+          }
+          else if(document.getElementById("three").checked) {
+            stars = 3;
+          }
+          else if(document.getElementById("four").checked) {
+            stars = 4;
+          }
+          else {
+            stars = 5;
+          }
+          $.post("../include/insertReview.php",
+            {
+            order : orderid,
+            deliverer: deliverer,
+            user : useridd, 
+            stars : stars,
+            comments : document.getElementById("comments").value
+            },
+          function(data){
+            if(data) {
+              alert("You have submitted your review of this order");
+              location.reload();
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
+      });
 
 
 
