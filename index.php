@@ -178,6 +178,8 @@ if (isset ( $_POST ['signin'] )) {
                      <h4>We are currently making deliveries to the Boston College campus only. We hope to expand to the off campus area in the near future, and we are currently
                     pioneering technology to keep tenders and steak subs nice and toasty over long distances. Please check back regularly for updates on our delivery service. Our delivery
                     hours match those of the dining halls, with our delivery times under 20 minutes. Eat up! </h4>
+                    <br>
+                    <h4>Strapped for cash or meal plan money? Sign up to deliver food to make a portion of every sale!</h4>
                 </div>
             </div>
         </div>
