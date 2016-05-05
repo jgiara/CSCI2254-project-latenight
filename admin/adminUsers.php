@@ -17,7 +17,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin | Munchies</title>
+	<title>All Users| Munchies</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -67,26 +67,6 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
             <h1>Use this table for customer support functions:</h1>
 
           			<!--insert table here-->
-
-                <div id="rorders">
-                <table id="history" class="display table table-bordered" cellspacing="0" width="100%">
-                      <tr>
-                          <th>Order Id</th>
-                          <th>Items</th>
-                          <th>Comments</th>
-                          <th>Delivery Charge</th>
-                          <th>Total Price</th>
-                          <th>Stage</th>
-                          <th>Submitted</th>
-                          <th>Submitted By</th>
-                          <th>Fulfilled</th>
-                          <th>Fulfilled By</th>
-                          <th>Payment Method</th>
-                          <th>Review Stars</th>
-                          <th>Review Comments</th>
-                      </tr>
-              </table>
-    </div>
             <div id="info">
                 <table id="userinfo" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
@@ -117,53 +97,18 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 
 		 var items = "";
     $(document).ready(function() {
-            $("#info").toggle();
-            $.getJSON( "../include/allOrdersFetch.php" , {
-              user: document.getElementById("userid").value
+        
+        $.getJSON( "../include/getAllUsers.php" , {
+              
             }, function(data) {
               $.each(data, function(i, item){
-                  items = "";
-                  $.getJSON( "../include/orderHistoryItemsFetch.php" , {
-                      orderid: item.Id
-                  }, function(dataa) {
-                  $.each(dataa, function(k, itemm){
-                    items += itemm.Name + ", ";
-                  });
-                  items = items.substring(0,items.length-2);
-                  $("<tr><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage
-                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Requested_By + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Fulfilled_By + "</td><td>" + item.Payment_Method + "</td><td>" + item.Stars + "</td><td>" + item.Review_Comments + "</td></tr>").appendTo('#history');
-                  items = "";
-                })
-              .fail(function() {
-                console.log( "getJSON error" );
-              });
-            
-                
-              });
-            })
-            .fail(function() {
-                console.log( "getJSON error" );
-            });
-    });
-  
-    /*$("#history").on("click", ".links", function(e) {
-        $("<tr><td>test</td><td>test</td></tr>").appendTo("#userInfo");
-        //$("#rorders").toggle();
-        //$("#info").toggle();
-        var temp = $(this).closest("tr").attr("id");
-        var linkid = $(temp).closet("a")
-        //var linkid = $(this).attr("id");
-        $.getJSON( "../include/getUser.php" , {
-              user: linkid
-            }, function(data) {
-              $.each(data, function(i, item){
-                  $("<tr><td>" + item.Eagle_Id + "</td><td>" + item.First_Name + "</td><td>" + + item.Last_Name + "</td><td>"
-                  + item.Email + "</td><td>" + item.Phone + "</td><td>" + item.Address + "</td></tr>").appendTo("#userInfo");
+                  $("<tr><td>" + item.Eagle_Id + "</td><td>" + item.First_Name + "</td><td>" + item.Last_Name + "</td><td>"
+                  + item.Email + "</td><td>" + item.Phone + "</td><td>" + item.Address + "</td></tr>").appendTo("#userinfo");
               });
           });
-        e.preventDefault();
+        
 
-    });*/
+    });
 
 
 
