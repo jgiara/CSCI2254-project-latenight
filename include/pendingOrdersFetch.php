@@ -2,7 +2,7 @@
 
 		$dbc = @mysqli_connect("localhost", "giara", "latenight", "giara")
 	       or die("Could not open menu db, " . mysqli_connect_error());
-		$query = "SELECT * FROM Orders where Stage = 'Pending' order by Id desc";				
+		$query = "SELECT * FROM Orders where Stage = 'Pending' and Time_Submitted >= now() - INTERVAL 2 Hour order by Id desc";				
 		$result = mysqli_query($dbc, $query) or die ("Error in Select" . mysqli_error($dbc));
 		
 		$menu_items = array();	// put the rows as objects in an array
