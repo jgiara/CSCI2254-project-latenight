@@ -39,7 +39,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./deliveryHome.php">L<b>Munchies@BC</b></a>
+      <a class="navbar-brand" href="./deliveryHome.php"><b>Munchies@BC</b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
