@@ -77,7 +77,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
                    <label>Eagle ID: </label> <input type="text" id="eagleid" readonly/></br></br>
                    <label>First Name: </label> <input type="text" id="first" /></br></br>
                    <label>Last Name: </label> <input type="text" id="last" /></br></br>
-                   <label>Address (Dorm Room Name/Number): </label> <input type="text" id="address" /></br></br>
+                   <label>Dorm Name/Number: </label> <input type="text" id="address" /></br></br>
                    <label>Phone Number: </label> <input type="text" id="phone" /></br></br>
                    <button class="btn btn-success"id="showpass">Change Password</button>
                    <button class="btn btn-warning"id="updatesettings">Update Settings</button>
