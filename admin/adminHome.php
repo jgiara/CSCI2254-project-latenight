@@ -61,7 +61,20 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
 			<div class="row">
 		    	<div class="col-lg-12">
             <h1>Use this table for customer support functions:</h1>
-          			<!--insert table here-->
+          			 <!--See Logged-In User's Order History-->
+                   <table id="adminHistory" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Order Id</th>
+                          <th>Ordering User</th>
+                          <th>Delivery Person</th>
+                          <th>Delivery Charge</th>
+                          <th>Total Price</th>
+                          <th>Stage</th>
+                          <th>Payment Method</th>
+                          <th>Stars</th>
+                          <th>Reivew Comment</th>
+                      </tr>
+                    </table>
        			</div>
 			</div>
 		</div>
@@ -74,6 +87,10 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    //table populate
+    
+
+    //navbar min
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");
@@ -92,6 +109,8 @@ $user     = $users->userdata($_SESSION['Eagle_Id']);
 		        event.preventDefault();
 		    });
 		});
+
+
 
   	</script>
 </body>
