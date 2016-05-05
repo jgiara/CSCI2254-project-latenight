@@ -15,6 +15,14 @@
 		else {
 			$result = false;
 		}
+
+		$query = "insert into Reviews (Order_Id) values ($order)";
+			if(mysqli_query($dbc, $query)) {
+			$result = true;
+			}
+			else {
+			$result = false;
+			}
 	
 		$data_from_post = array('item' => $item);
 		echo json_encode($result);

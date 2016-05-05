@@ -114,7 +114,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                   });
                   items = items.substring(0,items.length-2);
                   $("<tr><td>" + item.Id + "</td><td>" + items + "</td><td>" + item.Comments + "</td><td>" + item.Delivery_Charge + "</td><td>" + item.Total_Price + "</td><td>" + item.Stage
-                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Requested_By + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Fulfilled_By + "</td><td>" + item.Payment_Method + "</td><td>" + item.Stars + "</td><td>" + item.Comments + "</td></tr>").appendTo('#history');
+                + "</td><td>" + item.Time_Submitted + "</td><td>" + item.Requested_By + "</td><td>" + item.Time_Fulfilled + "</td><td>" + item.Fulfilled_By + "</td><td>" + item.Payment_Method + "</td><td>" + item.Stars + "</td><td>" + item.Review_Comments + "</td></tr>").appendTo('#history');
                   items = "";
                 })
               .fail(function() {
@@ -130,9 +130,6 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
     });
 
 
-
-
-     $(window).scroll(function() {
 
     //table populate
     
