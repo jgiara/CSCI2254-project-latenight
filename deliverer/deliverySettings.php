@@ -78,6 +78,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
                    <h1>Your Settings</h1>
                    <br>
                    <div id="set">
+                    <label>Your Rating: </label> <input type="text" id="rating" readonly/><label>Stars</label></br></br>
                    <label>Eagle ID: </label> <input type="text" id="eagleid" readonly/></br></br>
                    <label>First Name: </label> <input type="text" id="first" /></br></br>
                    <label>Last Name: </label> <input type="text" id="last" /></br></br>
@@ -113,7 +114,19 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
       document.getElementById("address").value = document.getElementById("useraddress").value;
       document.getElementById("phone").value = document.getElementById("userphone").value;
       $("#pass").toggle();
-    });
+      $.getJSON( "../include/delivererRatingFetch.php" , {
+              user: document.getElementById("userid").value
+            }, function(data) {
+
+              $.each(data, function(i, item){
+                document.getElementById("rating").value = item.ratingaverage;
+              });
+            })
+            .fail(function() {
+                console.log( "getJSON error" );
+            });
+
+          });
     $("#showpass").on("click", function() {
       $("#pass").toggle();
       $("#set").toggle();
