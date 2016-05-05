@@ -85,7 +85,7 @@ if (empty($_POST) === false) {
                            
                                 <input type="submit" name="submit" class="btn btn-success btn-lg btn-block" href="" value="Recover"></input>
 
-                              <span class="pull-right"><a href="./userLogin.php">Back to Login</a></span>
+                              <span class="pull-right"><a href="./index.php">Back to Login</a></span>
                              
                             </div>
                           </form>
