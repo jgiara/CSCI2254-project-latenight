@@ -151,8 +151,6 @@ if (isset ( $_POST ['signin'] )) {
 
                     <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
 
-                    <button id="acctButton" type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Create an Account</button>
-
                 </div>
             </div>
         </div>
