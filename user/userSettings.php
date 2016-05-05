@@ -73,12 +73,23 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
             <div class="row">
                 <div class="col-lg-12">
                    <h1>Your Settings</h1>
+                   <div id="set">
                    <label>Eagle ID</label><input type="text" id="eagleid" readonly/></br></br>
                    <label>First Name</label><input type="text" id="first" /></br></br>
                    <label>Last Name</label><input type="text" id="last" /></br></br>
                    <label>Address (Dorm Room)</label><input type="text" id="address" /></br></br>
                    <label>Phone Number</label><input type="text" id="phone" /></br></br>
-                   <label>Password</label><input type="text" id="password" /></br></br>
+                   <button id="showpass">Change Password</button>
+                   <button id="updatesettings">Update Settings</button>
+                   </div>
+                   <div id="pass">
+                   <label>New Password</label><input type="password" id="password" />
+                   <div id="passerror"></div></br></br>
+                   <label>Re-Enter New Password</label><input type="password" id="repassword" /></br></br>
+                   <button id="backset">Back To Settings</button>
+                   <button id="changepass">Update Password</button>
+                 </div>
+                   
                 </div>
             </div>
         </div>
@@ -97,6 +108,41 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
       document.getElementById("last").value = document.getElementById("userlast").value;
       document.getElementById("address").value = document.getElementById("useraddress").value;
       document.getElementById("phone").value = document.getElementById("userphone").value;
+      $("#pass").toggle();
+    });
+    $("#showpass").on("click", function() {
+      $("#pass").toggle();
+      $("#set").toggle();
+    });
+    $("#backset").on("click", function() {
+      $("#pass").toggle();
+      $("#set").toggle();
+    });
+
+    $("#updatesettings").on("click", function() {
+      var firstname = document.getElementById("first").value;
+      var lastname = document.getElementById("last").value;
+      var loc = document.getElementById("address").value;
+      var pnumber = document.getElementById("phone").value;
+
+      $.post("../include/updateUserSettings.php",
+            {
+            user : document.getElementById("userid").value,
+            fn: firstname,
+            ln: lastname,
+            addr: loc,
+            phone: pnumber
+            },
+          function(data){
+            if(data) {
+              alert("Your Setting Have Been Updated");
+              location.reload();
+
+            }
+            else {
+              alert("Insertion Failed");
+            }
+        });
 
     });
 
