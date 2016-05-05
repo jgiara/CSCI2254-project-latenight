@@ -3,6 +3,19 @@ ob_start();
 session_start();
 require '../include/init.php';
 $general->logged_out_protect();
+
+$user     = $users->userdata($_SESSION['Eagle_Id']);
+$eagleid  = $user['Eagle_Id'];
+$fn = $user['First_Name'];
+$ln = $user['Last_Name'];
+$addr = $user['Address'];
+$phn = $user['Phone'];
+
+echo "<input type='hidden' id='userid' value='$eagleid'/>";
+echo "<input type='hidden' id='userfirst' value='$fn'/>";
+echo "<input type='hidden' id='userlast' value='$ln'/>";
+echo "<input type='hidden' id='useraddress' value='$addr'/>";
+echo "<input type='hidden' id='userphone' value='$phn'/>";
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +72,13 @@ $general->logged_out_protect();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                   
+                   <h1>Your Settings</h1>
+                   <label>Eagle ID</label><input type="text" id="eagleid" readonly/></br></br>
+                   <label>First Name</label><input type="text" id="first" /></br></br>
+                   <label>Last Name</label><input type="text" id="last" /></br></br>
+                   <label>Address (Dorm Room)</label><input type="text" id="address" /></br></br>
+                   <label>Phone Number</label><input type="text" id="phone" /></br></br>
+                   <label>Password</label><input type="text" id="password" /></br></br>
                 </div>
             </div>
         </div>
@@ -72,6 +91,15 @@ $general->logged_out_protect();
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
   	<script type="text/javascript"> 
+    $(document).ready(function() {
+      document.getElementById("eagleid").value = document.getElementById("userid").value;
+      document.getElementById("first").value = document.getElementById("userfirst").value;
+      document.getElementById("last").value = document.getElementById("userlast").value;
+      document.getElementById("address").value = document.getElementById("useraddress").value;
+      document.getElementById("phone").value = document.getElementById("userphone").value;
+
+    });
+
 		 $(window).scroll(function() {
 		    if ($(".navbar").offset().top > 50) {
 		        $(".navbar-fixed-top").addClass("top-nav-collapse");

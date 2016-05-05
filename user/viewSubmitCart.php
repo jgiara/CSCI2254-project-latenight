@@ -19,7 +19,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
 	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Place Order| Project Late Night</title>
+	<title>Cart| Project Late Night</title>
 	<meta name="description" content="Boston College Late Night Delivery">
 
  	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                 
+                 <h1>Your Cart</h1>
                    <table id="cart" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
                           <th>Menu Item</th>
@@ -89,7 +89,7 @@ echo "<input type='hidden' id='address' value='$addr'/>";
                   <textarea rows="6" cols="50" id="comments" name="comments"></textarea>
                   <br>
                    <a href="placeOrder.php" class="btn btn-success" >
-                    Back to Cart
+                    Back to Menu
                   </a>
                   <a href="trackOrder.php" class="btn btn-warning" id="submitorder">
                     Check Out
