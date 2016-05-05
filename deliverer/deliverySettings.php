@@ -78,13 +78,13 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
                    <h1>Your Settings</h1>
                    <br>
                    <div id="set">
-                   <label>Eagle ID</label><input type="text" id="eagleid" readonly/></br></br>
-                   <label>First Name</label><input type="text" id="first" /></br></br>
-                   <label>Last Name</label><input type="text" id="last" /></br></br>
-                   <label>Address</label><input type="text" id="address" /></br></br>
-                   <label>Phone Number</label><input type="text" id="phone" /></br></br>
-                   <button id="showpass">Change Password</button>
-                   <button id="updatesettings">Update Settings</button>
+                   <label>Eagle ID: </label><input type="text" id="eagleid" readonly/></br></br>
+                   <label>First Name: </label><input type="text" id="first" /></br></br>
+                   <label>Last Name: </label><input type="text" id="last" /></br></br>
+                   <label>Address: </label><input type="text" id="address" /></br></br>
+                   <label>Phone Number: </label><input type="text" id="phone" /></br></br>
+                   <button class="btn btn-success"id="showpass">Change Password</button>
+                   <button class="btn btn-warning"id="updatesettings">Update Settings</button>
                    </div>
                    <div id="pass">
                    <label>New Password</label><input type="password" id="password" />
