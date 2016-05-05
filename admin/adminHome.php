@@ -66,6 +66,8 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
             <h1>Use this table for customer support functions:</h1>
 
           			<!--insert table here-->
+                
+                <div id="rorders">
                 <table id="history" class="display table table-bordered" cellspacing="0" width="100%">
                       <tr>
                           <th>Order Id</th>
@@ -82,7 +84,20 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                           <th>Review Stars</th>
                           <th>Review Comments</th>
                       </tr>
-      </table>
+              </table>
+    </div>
+            <div id="info">
+                <table id="userinfo" class="display table table-bordered" cellspacing="0" width="100%">
+                      <tr>
+                          <th>Eagle Id</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Dorm Name/Number</th>
+                      </tr>
+              </table>
+            </div>
 
             <br>
 
@@ -101,6 +116,7 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
 
 		 var items = "";
     $(document).ready(function() {
+            $("#info").toggle();
             $.getJSON( "../include/allOrdersFetch.php" , {
               user: document.getElementById("userid").value
             }, function(data) {
@@ -128,6 +144,25 @@ echo "<input type='hidden' id='userid' value='$eagleid'/>";
                 console.log( "getJSON error" );
             });
     });
+  
+    /*$("#history").on("click", ".links", function(e) {
+        $("<tr><td>test</td><td>test</td></tr>").appendTo("#userInfo");
+        //$("#rorders").toggle();
+        //$("#info").toggle();
+        var temp = $(this).closest("tr").attr("id");
+        var linkid = $(temp).closet("a")
+        //var linkid = $(this).attr("id");
+        $.getJSON( "../include/getUser.php" , {
+              user: linkid
+            }, function(data) {
+              $.each(data, function(i, item){
+                  $("<tr><td>" + item.Eagle_Id + "</td><td>" + item.First_Name + "</td><td>" + + item.Last_Name + "</td><td>"
+                  + item.Email + "</td><td>" + item.Phone + "</td><td>" + item.Address + "</td></tr>").appendTo("#userInfo");
+              });
+          });
+        e.preventDefault();
+
+    });*/
 
 
 

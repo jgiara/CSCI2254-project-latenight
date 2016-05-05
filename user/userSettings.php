@@ -94,7 +94,7 @@ echo "<input type='hidden' id='userphone' value='$phn'/>";
             </div>
         </div>
     </section>
-
+    
 <!-- scripts & BS/custom JS -->
 
     <script src="../js/jquery.easing.min.js"></script>
